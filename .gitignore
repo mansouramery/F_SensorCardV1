@@ -1,0 +1,28 @@
+# Ignore build output
+*.axf
+*.hex
+*.bin
+*.o
+*.d
+*.map
+
+# Build and IDE-specific files
+*.o
+*.d
+*.elf
+*.map
+*.hex
+*.bin
+*.axf
+*.uvguix.*
+*.uvproj.*
+*.uvopt.*
+
+# CubeMX generated files
+*.ioc
+MX_*
+
+# Backup files
+*.bak
+*.swp
+*.tmp
