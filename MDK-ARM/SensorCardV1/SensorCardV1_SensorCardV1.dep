@@ -1,7 +1,7 @@
 Dependencies for Project 'SensorCardV1', Target 'SensorCardV1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
-F (startup_stm32f103xb.s)(0x68246020)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 531" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xb.lst --xref -o sensorcardv1\startup_stm32f103xb.o --depend sensorcardv1\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x6825B572)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\main.o --omf_browse sensorcardv1\main.crf --depend sensorcardv1\main.d)
+F (startup_stm32f103xb.s)(0x683EC29F)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 531" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xb.lst --xref -o sensorcardv1\startup_stm32f103xb.o --depend sensorcardv1\startup_stm32f103xb.d)
+F (../Core/Src/main.c)(0x6847C854)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\main.o --omf_browse sensorcardv1\main.crf --depend sensorcardv1\main.d)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -39,9 +39,16 @@ I (../Core/Inc/spi.h)(0x68246015)
 I (../Core/Inc/tim.h)(0x68246016)
 I (../Core/Inc/usart.h)(0x68246016)
 I (../Core/Inc/gpio.h)(0x68246013)
-I (..\Libs\ADS1115\ads1115.h)(0x6825AC35)
-I (..\Libs\MAX31856\max31856.h)(0x68259DF0)
-F (../Core/Src/gpio.c)(0x68246013)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\gpio.o --omf_browse sensorcardv1\gpio.crf --depend sensorcardv1\gpio.d)
+I (../Libs/ADS1115/ads1115.h)(0x6846B681)
+I (../../MX31856Lib/max31856.h)(0x683C2F91)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdbool.h)(0x5EC856F6)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
+I (..\Libs\canFunc\canfunc.h)(0x683ECE75)
+I (..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige\CAN_CONF.h)(0x6809F568)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\string.h)(0x5EC85704)
+I (..\Libs\thermocouple\thermocouple.h)(0x6847C4FA)
+F (../Core/Src/gpio.c)(0x68246013)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\gpio.o --omf_browse sensorcardv1\gpio.crf --depend sensorcardv1\gpio.d)
 I (../Core/Inc/gpio.h)(0x68246013)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
@@ -74,7 +81,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/can.c)(0x68246014)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\can.o --omf_browse sensorcardv1\can.crf --depend sensorcardv1\can.d)
+F (../Core/Src/can.c)(0x683EC52C)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\can.o --omf_browse sensorcardv1\can.crf --depend sensorcardv1\can.d)
 I (../Core/Inc/can.h)(0x68246014)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
@@ -107,7 +114,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/i2c.c)(0x68246015)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\i2c.o --omf_browse sensorcardv1\i2c.crf --depend sensorcardv1\i2c.d)
+I (..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige\CAN_CONF.h)(0x6809F568)
+F (../Core/Src/i2c.c)(0x68246015)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\i2c.o --omf_browse sensorcardv1\i2c.crf --depend sensorcardv1\i2c.d)
 I (../Core/Inc/i2c.h)(0x68246015)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
@@ -140,7 +148,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/spi.c)(0x68246015)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\spi.o --omf_browse sensorcardv1\spi.crf --depend sensorcardv1\spi.d)
+F (../Core/Src/spi.c)(0x68358934)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\spi.o --omf_browse sensorcardv1\spi.crf --depend sensorcardv1\spi.d)
 I (../Core/Inc/spi.h)(0x68246015)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
@@ -173,7 +181,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/tim.c)(0x682463CD)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\tim.o --omf_browse sensorcardv1\tim.crf --depend sensorcardv1\tim.d)
+F (../Core/Src/tim.c)(0x682463CD)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\tim.o --omf_browse sensorcardv1\tim.crf --depend sensorcardv1\tim.d)
 I (../Core/Inc/tim.h)(0x68246016)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
@@ -206,7 +214,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/usart.c)(0x68246016)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\usart.o --omf_browse sensorcardv1\usart.crf --depend sensorcardv1\usart.d)
+F (../Core/Src/usart.c)(0x68246016)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\usart.o --omf_browse sensorcardv1\usart.crf --depend sensorcardv1\usart.d)
 I (../Core/Inc/usart.h)(0x68246016)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
@@ -239,7 +247,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/stm32f1xx_it.c)(0x68246016)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_it.o --omf_browse sensorcardv1\stm32f1xx_it.crf --depend sensorcardv1\stm32f1xx_it.d)
+F (../Core/Src/stm32f1xx_it.c)(0x683EC294)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_it.o --omf_browse sensorcardv1\stm32f1xx_it.crf --depend sensorcardv1\stm32f1xx_it.d)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -271,8 +279,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-I (../Core/Inc/stm32f1xx_it.h)(0x68246016)
-F (../Core/Src/stm32f1xx_hal_msp.c)(0x68246017)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_msp.o --omf_browse sensorcardv1\stm32f1xx_hal_msp.crf --depend sensorcardv1\stm32f1xx_hal_msp.d)
+I (../Core/Inc/stm32f1xx_it.h)(0x683EC294)
+F (../Core/Src/stm32f1xx_hal_msp.c)(0x68246017)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_msp.o --omf_browse sensorcardv1\stm32f1xx_hal_msp.crf --depend sensorcardv1\stm32f1xx_hal_msp.d)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -304,7 +312,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_gpio_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_gpio_ex.crf --depend sensorcardv1\stm32f1xx_hal_gpio_ex.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_gpio_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_gpio_ex.crf --depend sensorcardv1\stm32f1xx_hal_gpio_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -335,7 +343,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_can.o --omf_browse sensorcardv1\stm32f1xx_hal_can.crf --depend sensorcardv1\stm32f1xx_hal_can.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_can.o --omf_browse sensorcardv1\stm32f1xx_hal_can.crf --depend sensorcardv1\stm32f1xx_hal_can.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -366,7 +374,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal.o --omf_browse sensorcardv1\stm32f1xx_hal.crf --depend sensorcardv1\stm32f1xx_hal.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal.o --omf_browse sensorcardv1\stm32f1xx_hal.crf --depend sensorcardv1\stm32f1xx_hal.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -397,7 +405,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_rcc.o --omf_browse sensorcardv1\stm32f1xx_hal_rcc.crf --depend sensorcardv1\stm32f1xx_hal_rcc.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_rcc.o --omf_browse sensorcardv1\stm32f1xx_hal_rcc.crf --depend sensorcardv1\stm32f1xx_hal_rcc.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -428,7 +436,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_rcc_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_rcc_ex.crf --depend sensorcardv1\stm32f1xx_hal_rcc_ex.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_rcc_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_rcc_ex.crf --depend sensorcardv1\stm32f1xx_hal_rcc_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -459,7 +467,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_gpio.o --omf_browse sensorcardv1\stm32f1xx_hal_gpio.crf --depend sensorcardv1\stm32f1xx_hal_gpio.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_gpio.o --omf_browse sensorcardv1\stm32f1xx_hal_gpio.crf --depend sensorcardv1\stm32f1xx_hal_gpio.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -490,7 +498,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_dma.o --omf_browse sensorcardv1\stm32f1xx_hal_dma.crf --depend sensorcardv1\stm32f1xx_hal_dma.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_dma.o --omf_browse sensorcardv1\stm32f1xx_hal_dma.crf --depend sensorcardv1\stm32f1xx_hal_dma.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -521,7 +529,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_cortex.o --omf_browse sensorcardv1\stm32f1xx_hal_cortex.crf --depend sensorcardv1\stm32f1xx_hal_cortex.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_cortex.o --omf_browse sensorcardv1\stm32f1xx_hal_cortex.crf --depend sensorcardv1\stm32f1xx_hal_cortex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -552,7 +560,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_pwr.o --omf_browse sensorcardv1\stm32f1xx_hal_pwr.crf --depend sensorcardv1\stm32f1xx_hal_pwr.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_pwr.o --omf_browse sensorcardv1\stm32f1xx_hal_pwr.crf --depend sensorcardv1\stm32f1xx_hal_pwr.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -583,7 +591,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_flash.o --omf_browse sensorcardv1\stm32f1xx_hal_flash.crf --depend sensorcardv1\stm32f1xx_hal_flash.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_flash.o --omf_browse sensorcardv1\stm32f1xx_hal_flash.crf --depend sensorcardv1\stm32f1xx_hal_flash.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -614,7 +622,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_flash_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_flash_ex.crf --depend sensorcardv1\stm32f1xx_hal_flash_ex.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_flash_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_flash_ex.crf --depend sensorcardv1\stm32f1xx_hal_flash_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -645,7 +653,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_exti.o --omf_browse sensorcardv1\stm32f1xx_hal_exti.crf --depend sensorcardv1\stm32f1xx_hal_exti.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_exti.o --omf_browse sensorcardv1\stm32f1xx_hal_exti.crf --depend sensorcardv1\stm32f1xx_hal_exti.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -676,7 +684,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_i2c.o --omf_browse sensorcardv1\stm32f1xx_hal_i2c.crf --depend sensorcardv1\stm32f1xx_hal_i2c.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_i2c.o --omf_browse sensorcardv1\stm32f1xx_hal_i2c.crf --depend sensorcardv1\stm32f1xx_hal_i2c.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -707,7 +715,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_spi.o --omf_browse sensorcardv1\stm32f1xx_hal_spi.crf --depend sensorcardv1\stm32f1xx_hal_spi.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_spi.o --omf_browse sensorcardv1\stm32f1xx_hal_spi.crf --depend sensorcardv1\stm32f1xx_hal_spi.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -738,7 +746,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_tim.o --omf_browse sensorcardv1\stm32f1xx_hal_tim.crf --depend sensorcardv1\stm32f1xx_hal_tim.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_tim.o --omf_browse sensorcardv1\stm32f1xx_hal_tim.crf --depend sensorcardv1\stm32f1xx_hal_tim.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -769,7 +777,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_tim_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_tim_ex.crf --depend sensorcardv1\stm32f1xx_hal_tim_ex.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_tim_ex.o --omf_browse sensorcardv1\stm32f1xx_hal_tim_ex.crf --depend sensorcardv1\stm32f1xx_hal_tim_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -800,7 +808,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_uart.o --omf_browse sensorcardv1\stm32f1xx_hal_uart.crf --depend sensorcardv1\stm32f1xx_hal_uart.d)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\stm32f1xx_hal_uart.o --omf_browse sensorcardv1\stm32f1xx_hal_uart.crf --depend sensorcardv1\stm32f1xx_hal_uart.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -831,7 +839,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (../Core/Src/system_stm32f1xx.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\system_stm32f1xx.o --omf_browse sensorcardv1\system_stm32f1xx.crf --depend sensorcardv1\system_stm32f1xx.d)
+F (../Core/Src/system_stm32f1xx.c)(0x66E821F5)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\system_stm32f1xx.o --omf_browse sensorcardv1\system_stm32f1xx.crf --depend sensorcardv1\system_stm32f1xx.d)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x66E821F4)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x66E821F4)
 I (../Drivers/CMSIS/Include/core_cm3.h)(0x66E8217D)
@@ -862,8 +870,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (..\Libs\ADS1115\ads1115.c)(0x6825B23D)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\ads1115.o --omf_browse sensorcardv1\ads1115.crf --depend sensorcardv1\ads1115.d)
-I (..\Libs\ADS1115\ads1115.h)(0x6825AC35)
+F (..\Libs\ADS1115\ads1115.c)(0x6846B681)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\ads1115.o --omf_browse sensorcardv1\ads1115.crf --depend sensorcardv1\ads1115.d)
+I (..\Libs\ADS1115\ads1115.h)(0x6846B681)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -895,8 +903,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (..\Libs\MAX31856\max31856.c)(0x6825892B)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\max31856.o --omf_browse sensorcardv1\max31856.crf --depend sensorcardv1\max31856.d)
-I (..\Libs\MAX31856\max31856.h)(0x68259DF0)
+F (..\..\MX31856Lib\max31856.c)(0x683FE616)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\max31856.o --omf_browse sensorcardv1\max31856.crf --depend sensorcardv1\max31856.d)
+I (..\..\MX31856Lib\max31856.h)(0x683C2F91)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -928,7 +936,81 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-F (F:\Keil5_31\Setup\packs\Keil\ARM_Compiler\1.7.2\Source\retarget_io.c)(0x584E6906)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Libs\ADS1115 -I ..\Libs\MAX31856-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\retarget_io.o --omf_browse sensorcardv1\retarget_io.crf --depend sensorcardv1\retarget_io.d)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdbool.h)(0x5EC856F6)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
+F (..\Libs\canFunc\canfunc.c)(0x683ECE16)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\canfunc.o --omf_browse sensorcardv1\canfunc.crf --depend sensorcardv1\canfunc.d)
+I (..\Libs\canFunc\canfunc.h)(0x683ECE75)
+I (../Core/Inc/can.h)(0x68246014)
+I (../Core/Inc/main.h)(0x68246018)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
+I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x66E821F5)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x66E821F4)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x66E821F4)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x66E8217D)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdint.h)(0x5EC856FC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x66E8217D)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x66E8217D)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x66E8217D)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x66E821F4)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x66E821F5)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stddef.h)(0x5EC856FC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
+I (..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige\CAN_CONF.h)(0x6809F568)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdbool.h)(0x5EC856F6)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\string.h)(0x5EC85704)
+F (..\Libs\thermocouple\thermocouple.c)(0x6847C32D)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\thermocouple.o --omf_browse sensorcardv1\thermocouple.crf --depend sensorcardv1\thermocouple.d)
+I (..\Libs\thermocouple\thermocouple.h)(0x6847C4FA)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
+I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x66E821F5)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x66E821F4)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x66E821F4)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x66E8217D)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdint.h)(0x5EC856FC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x66E8217D)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x66E8217D)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x66E8217D)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x66E821F4)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x66E821F5)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\stddef.h)(0x5EC856FC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
+I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
+F (F:\Keil5_31\Setup\packs\Keil\ARM_Compiler\1.7.2\Source\retarget_io.c)(0x584E6906)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige -I ..\Libs\canFunc -I ..\Libs\thermocouple-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\retarget_io.o --omf_browse sensorcardv1\retarget_io.crf --depend sensorcardv1\retarget_io.d)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\string.h)(0x5EC85704)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdint.h)(0x5EC856FC)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)

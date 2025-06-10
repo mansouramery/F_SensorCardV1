@@ -5,11 +5,13 @@
 
 #define ADS1115_REG_CONVERSION  0x00
 #define ADS1115_REG_CONFIG      0x01
+#define ADS1115_REG_LoThresh    0x02
+#define ADS1115_REG_HighThresh  0x03
 
 // Configuration options
 typedef enum{
-    ADS1115_ADD1 = (0x48 << 1),
-    ADS1115_ADD2 = (0x49 << 1)    
+    ADS1115_ADD1 = (0x48 << 1), //GND connected
+    ADS1115_ADD2 = (0x49 << 1)  // VCC connected  
        
 }ADS1115_ADD;
 
@@ -53,7 +55,7 @@ extern I2C_HandleTypeDef hi2c1;
 
 
 HAL_StatusTypeDef ADS1115_WriteConfig(ADS1115_MUX mux, ADS1115_PGA pga, ADS1115_MODE mode, ADS1115_DR dr,ADS1115_ADD addr);
-HAL_StatusTypeDef ADS1115_StartConversion(ADS1115_MUX mux,ADS1115_ADD addr);
+HAL_StatusTypeDef ADS1115_StartConversion(ADS1115_MUX mux,ADS1115_ADD addr,ADS1115_DR DR,ADS1115_PGA pga);
 HAL_StatusTypeDef ADS1115_ReadConversion(int16_t *value,ADS1115_ADD addr);
 #endif
 

@@ -18,10 +18,11 @@ HAL_StatusTypeDef ADS1115_WriteConfig(ADS1115_MUX mux, ADS1115_PGA pga, ADS1115_
 }
 
 
-HAL_StatusTypeDef ADS1115_StartConversion(ADS1115_MUX mux,ADS1115_ADD addr)
+HAL_StatusTypeDef ADS1115_StartConversion(ADS1115_MUX mux,ADS1115_ADD addr, ADS1115_DR DR,ADS1115_PGA pga)
 {
     uint8_t config[3];
-    uint16_t config_value = 0x8000 | mux | ADS1115_PGA_4_096V | ADS1115_MODE_SINGLE | ADS1115_DR_128SPS | 0x0003;
+    uint16_t config_value = 0x8000 | mux | pga | ADS1115_MODE_SINGLE | DR | 0x0003;
+    //uint16_t config_value = 0x8000 | mux | ADS1115_PGA_6_144V | ADS1115_MODE_SINGLE | ADS1115_DR_128SPS | 0x0003;
     
     config[0] = ADS1115_REG_CONFIG;
     config[1] = (config_value >> 8) & 0xFF;

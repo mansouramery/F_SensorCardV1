@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\Libs\ADS1115;..\Libs\MAX31856</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Libs/ADS1115;../../MX31856Lib;..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige;..\Libs\canFunc;..\Libs\thermocouple</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -556,7 +556,27 @@
             <File>
               <FileName>max31856.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Libs\MAX31856\max31856.c</FilePath>
+              <FilePath>..\..\MX31856Lib\max31856.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>CAN_fun</GroupName>
+          <Files>
+            <File>
+              <FileName>canfunc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libs\canFunc\canfunc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Thermocouple</GroupName>
+          <Files>
+            <File>
+              <FileName>thermocouple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libs\thermocouple\thermocouple.c</FilePath>
             </File>
           </Files>
         </Group>

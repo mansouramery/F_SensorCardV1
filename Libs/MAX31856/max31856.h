@@ -48,5 +48,7 @@ uint8_t MAX31856_ReadReg(uint8_t reg,uint8_t CS);
 void MAX31856_Init(MAX31856_TC_Type tcType, MAX31856_AVG_Mode avgMode,  uint8_t CS);
 float MAX31856_ReadTemp(uint8_t CS);
 float MAX31856_ReadCJTemp(uint8_t CS);
+uint8_t MAX31856_ReadFault(uint8_t CS);
+void MAX31856_TriggerOneShot(uint8_t CS) ;
 #endif
 

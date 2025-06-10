@@ -1,20 +1,23 @@
 #include "max31856.h"
+#include "stdio.h"
 
 
 //.............................................................
 
 void MAX31856_WriteReg(uint8_t reg, uint8_t value, uint8_t CS) {
     uint8_t txData[2] = {reg | 0x80, value}; // MSB=1 for write
+    uint8_t R  = 0;
     switch (CS){
         case 1:
             HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_RESET); 
-            HAL_SPI_Transmit(&hspi1, txData, 2, 100);
+            HAL_SPI_Transmit(&hspi1, txData, 2, 1000);
             HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_SET);
             break;
         case 2:
+            HAL_GPIO_WritePin(CS2_GPIO_Port, CS2_Pin, GPIO_PIN_SET);
+            R = HAL_SPI_Transmit(&hspi1, txData, 2, 1000);
             HAL_GPIO_WritePin(CS2_GPIO_Port, CS2_Pin, GPIO_PIN_RESET);
-            HAL_SPI_Transmit(&hspi1, txData, 2, 100);
-            HAL_GPIO_WritePin(CS2_GPIO_Port, CS2_Pin, GPIO_PIN_SET);         
+printf("WriteResult=%d\n",R);        
         break;
         default:
           //.....
@@ -26,16 +29,20 @@ void MAX31856_WriteReg(uint8_t reg, uint8_t value, uint8_t CS) {
 uint8_t MAX31856_ReadReg(uint8_t reg,uint8_t CS) {
     uint8_t txData[2] = {reg & 0x7F, 0x00}; // MSB=0 for read
     uint8_t rxData[2];
+    uint8_t R  = 0;
     switch (CS){
         case 1:
             HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_RESET); 
-            HAL_SPI_TransmitReceive(&hspi1, txData, rxData, 2, 100);
+            HAL_SPI_TransmitReceive(&hspi1, txData, rxData, 2, 1000);
             HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_SET);
             break;
         case 2:
+            HAL_GPIO_WritePin(CS2_GPIO_Port, CS2_Pin, GPIO_PIN_SET);
+           //HAL_Delay(1);
+            R = HAL_SPI_TransmitReceive(&hspi1, txData, rxData, 2, 1000);         
             HAL_GPIO_WritePin(CS2_GPIO_Port, CS2_Pin, GPIO_PIN_RESET);
-            HAL_SPI_TransmitReceive(&hspi1, txData, rxData, 2, 100);
-            HAL_GPIO_WritePin(CS2_GPIO_Port, CS2_Pin, GPIO_PIN_SET);         
+            //HAL_Delay(1);        
+//printf("ReadResult=%d\n",R);          
         break;
         default:
           //.....
@@ -50,6 +57,7 @@ uint8_t MAX31856_ReadReg(uint8_t reg,uint8_t CS) {
 
 void MAX31856_Init(MAX31856_TC_Type tcType, MAX31856_AVG_Mode avgMode,  uint8_t CS) {
     // Configure CR0 (50Hz noise rejection + averaging)
+    printf("CR0 Reg=%d\n", 0x03 | (avgMode << 4));
     MAX31856_WriteReg(MAX31856_CR0_REG, 0x03 | (avgMode << 4),CS);
 
     // Configure CR1 (Thermocouple type + cold-junction enable)
@@ -84,3 +92,11 @@ float MAX31856_ReadCJTemp(uint8_t CS) {
     return (float)rawCJTemp * 0.015625f; // LSB = 0.015625°C
 }
 
+void MAX31856_TriggerOneShot(uint8_t CS) {
+    uint8_t cr0 = MAX31856_ReadReg(MAX31856_CR0_REG, CS);
+    MAX31856_WriteReg(MAX31856_CR0_REG, cr0 | 0x40, CS); // Set 1SHOT bit
+    HAL_Delay(200); // Wait for conversion (max 185 ms for 50 Hz filter)
+}
+uint8_t MAX31856_ReadFault(uint8_t CS) {
+    return MAX31856_ReadReg(MAX31856_SR_REG, CS);
+}
