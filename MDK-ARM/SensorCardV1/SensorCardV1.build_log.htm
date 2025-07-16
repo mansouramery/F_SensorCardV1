@@ -34,15 +34,25 @@ compiling main.c...
   #endif
 ..\Libs\thermocouple\thermocouple.h(14): warning:  #1-D: last line of file ends without a newline
   #endif // THERMOCOUPLE_H
-../Core/Src/main.c(117): warning:  #177-D: variable "voltage"  was declared but never referenced
+../Core/Src/main.c(67): warning:  #188-D: enumerated type mixed with another type
+  ADS1115_CH thermo = {0};
+../Core/Src/main.c(68): warning:  #188-D: enumerated type mixed with another type
+  ADS1115_CH pressure = {0};
+../Core/Src/main.c(69): warning:  #188-D: enumerated type mixed with another type
+  ADS1115_CH speed = {0};
+../Core/Src/main.c(118): warning:  #177-D: variable "adc_value"  was declared but never referenced
+      int16_t adc_value;
+../Core/Src/main.c(119): warning:  #177-D: variable "voltage"  was declared but never referenced
       float voltage;
-../Core/Src/main.c(134): warning:  #177-D: variable "f_R2"  was declared but never referenced
-    float f_R2 = 0.0;  
-../Core/Src/main.c: 5 warnings, 0 errors
+../Core/Src/main.c(148): warning:  #177-D: variable "G1"  was declared but never referenced
+    float G1 = 4.004;  
+../Core/Src/main.c(150): warning:  #177-D: variable "Temp"  was declared but never referenced
+    float Temp = 0.0;
+../Core/Src/main.c: 10 warnings, 0 errors
 linking...
-Program Size: Code=29546 RO-data=922 RW-data=32 ZI-data=2624  
+Program Size: Code=28418 RO-data=906 RW-data=32 ZI-data=2768  
 FromELF: creating hex file...
-"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 5 Warning(s).
+"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -75,7 +85,7 @@ Package Vendor: Keil
 
    * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:ITM:1.2.0
       Source file:   Source\retarget_io.c
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

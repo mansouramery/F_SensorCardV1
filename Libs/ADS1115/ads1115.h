@@ -51,12 +51,31 @@ typedef enum {
     ADS1115_DR_860SPS = 0x00E0
 } ADS1115_DR;
 
+typedef struct{
+ ADS1115_DR dr;
+ ADS1115_PGA pga;
+ ADS1115_MUX mux;   
+ ADS1115_ADD addr;  
+ int16_t adc_value;
+ float f_value;
+ float f_preval;
+ uint16_t count;
+ float f_maxval;
+ int i_maxval;    
+ int i_value;
+float pga_val;  
+float gain; 
+uint16_t rst_ct;    
+       
+}ADS1115_CH;
+
 extern I2C_HandleTypeDef hi2c1;
 
 
 HAL_StatusTypeDef ADS1115_WriteConfig(ADS1115_MUX mux, ADS1115_PGA pga, ADS1115_MODE mode, ADS1115_DR dr,ADS1115_ADD addr);
 HAL_StatusTypeDef ADS1115_StartConversion(ADS1115_MUX mux,ADS1115_ADD addr,ADS1115_DR DR,ADS1115_PGA pga);
 HAL_StatusTypeDef ADS1115_ReadConversion(int16_t *value,ADS1115_ADD addr);
+HAL_StatusTypeDef ADS1115_ReadADC(ADS1115_CH *adc_ch);
 #endif
 
 
