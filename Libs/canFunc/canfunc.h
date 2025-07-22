@@ -8,7 +8,7 @@
 #define CAN_BUFFER_SIZE 32
 
 extern CAN_HandleTypeDef hcan;
-
+extern volatile bool cycle_sync;
 typedef struct {
     uint32_t id;
     uint8_t data[8];

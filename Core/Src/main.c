@@ -33,21 +33,26 @@
 #include "canfunc.h"
 #include "math.h"
 #include "thermocouple.h"
+#include "calculate_fun.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define Q_LEN 2
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+const float  offset_0 = 0.0;
+const float offset_0_1 = -0.1; 
+const float offset_0_5 = -0.503; 
+const float offset_1_0 = -1.003; 
+const float offset_4_0 = -3.003; 
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+int test = 0;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -64,9 +69,17 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-ADS1115_CH thermo = {0};
-ADS1115_CH pressure = {0};
-ADS1115_CH speed = {0};
+Analog thermo = {0};
+Analog pressure[2] = {{0}};
+Analog speed[2] = {{0}};
+Analog inject_r = {0};
+Analog mold_r = {0};
+volatile bool cycle_sync = false;
+volatile bool Send_permite = false;
+
+Queue Qspeed = {0};
+Queue Qpressure = {0};
+
 /* USER CODE END 0 */
 
 /**
@@ -102,9 +115,10 @@ int main(void)
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   MX_TIM1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim1);
-  
+  HAL_TIM_Base_Start_IT(&htim1);
+  //HAL_TIM_Base_Start_IT(&htim2); 
   HAL_CAN_Start( & hcan);
   HAL_CAN_ActivateNotification( & hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
   
@@ -115,100 +129,94 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    int16_t adc_value;
-    float voltage;
-    HAL_Delay(1000);
-    uint8_t cs = 1;
-    begin(1);
-    setThermocoupleType(MAX31856_ICTYPE_K,1);    
-    
-
-//  float f_Temp2 = 0.0;
-//  float f_SP = 0.0;
-//  float f_PR = 0.0;
-//  float f_PreSP = 0.0;
-//  float f_PrePR = 0.0;
-//  int Pre_Reset = 0;
-//  int Pre_Reset1 = 0;  
-//  float f_R1 = 0.0;
-//  float f_R2 = 0.0;  
-//  
-//  int i_Temp2 = 0;
-//  int i_SP = 0;
-//  int i_PR = 0;
-//  int i_R1 = 0;
-//  int i_R2 = 0;
-  float f_Temp1 = 0.0;
-  int i_Temp1 = 0;  
-  char str_Temp[9]={0};
-  char str_R1[9]={0};
-  char str_R2[9]={0};  
-  char str_Pressure[9]={0};
-  char str_Speed[9]={0};
-  float G1 = 4.004;  
-  float CJT = 0.0;
-  float Temp = 0.0;
-printf("\nStart...\n");  
-thermo.addr = ADS1115_ADD2;
-thermo.dr = ADS1115_DR_8SPS;
-thermo.mux = ADS1115_MUX_AIN1_AIN3;
-thermo.pga = ADS1115_PGA_0_256V; 
-thermo.gain =  4.004; 
-thermo.rst_ct = 300;
-  
-pressure.addr = ADS1115_ADD1;
-pressure.dr = ADS1115_DR_64SPS;
-pressure.mux = ADS1115_MUX_AIN0_GND;
-pressure.pga = ADS1115_PGA_4_096V; 
-pressure.gain =  4.004;   
-pressure.rst_ct = 300;
-  
-speed.addr = ADS1115_ADD1;
-speed.dr = ADS1115_DR_64SPS;
-speed.mux = ADS1115_MUX_AIN2_GND;
-speed.pga = ADS1115_PGA_4_096V; 
-speed.gain =  4.004;
-speed.rst_ct = 300;
-
+  printf("\nStart...\n");  
+  // init the board
+    max_begin(1);
+    setThermocoupleType(MAX31856_ICTYPE_K,1);
+    adc_init();  
+    uint32_t tik = 0, tok = 0;
+    VAL_opt opt;
+//    strcpy(Qpressure.List[0],"-0");
+//    strcpy(Qpressure.List[1],"-0");
+//    strcpy(Qpressure.List[0],"-0");
+//    strcpy(Qpressure.List[1],"-0");
   while (1)
   {       
 
 ////..........................................................................
+if(cycle_sync == false){
+    //tik = HAL_GetTick();
+    if(cal_speed(&inject_r,BASE_500us) < offset_4_0){  
+        //printf("\nxxxxxxxxCode here1\n");
+        //printf("inject_r speed= %f\n",inject_r.minspeed);
+        //printf("Value=%f,preValue=%f\n",inject_r.f_value,inject_r.f_preval);        
+      ADS1115_ReadADC(&pressure[inject]); 
+      ADS1115_ReadADC(&speed[inject]);
+//    if(inject_r.speed < inject_r.minspeed){
+//         inject_r.minspeed = inject_r.speed;
+//     }    
+    }    
+        //tok = HAL_GetTick();
+    //printf("execution_Time=%d\n",tok-tik);
+    if(cal_speed(&mold_r,BASE_500us) < offset_4_0){
+        //printf("\nxxxxxxxxCode here2\n");
+        //printf("mold_r speed= %f\n",mold_r.minspeed);  
+        //printf("Value=%f,preValue=%f\n",mold_r.f_value,mold_r.f_preval);          
+      ADS1115_ReadADC(&pressure[mold]); 
+      ADS1115_ReadADC(&speed[mold]);  
+        
+    }       
+}else{
+    HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
+    printf("\nvvvvvvvvvvvvCode here3\n");
+    //inject pressure record    
+    //printf("MAX-VALUE=%f",pressure[inject].f_maxval);
+    analog_record(&pressure[inject],"Ip",MAX_VAL);
+    analog_reset(&pressure[inject]);
+    //mold close pressure record    
+    analog_record(&pressure[mold],"Mp",MAX_VAL);
+    analog_queue(&Qpressure,pressure[mold].str);
+    analog_reset(&pressure[mold]);     
+    //inject speed record
+    analog_record(&speed[inject],"Is",MAX_VAL);
+    analog_reset(&speed[inject]);
+    //mold close speed record    
+    analog_record(&speed[mold],"Ms",MAX_VAL);
+    analog_queue(&Qspeed,speed[mold].str);
+    analog_reset(&speed[mold]);    
+    //Inject speed record
+    analog_record(&inject_r,"Rs",min_SPEED);
+    analog_reset(&inject_r);   
+    analog_reset(&mold_r);
+    
+    cycle_sync = false;
+    Send_permite = true;    
+}
 
-      ADS1115_ReadADC(&pressure); 
-      ADS1115_ReadADC(&speed);       
-      memset(str_Pressure,0,strlen(str_Pressure));  
-      memset(str_Speed,0,strlen(str_Speed));            
-      snprintf(str_Pressure, sizeof(str_Pressure), "P%d,", pressure.i_maxval);  
-      snprintf(str_Speed, sizeof(str_Speed), "S%d,", speed.i_maxval);        
-      printf("Pressure STRING data = %s\n",str_Pressure);      
-      printf("Speed STRING data = %s\n..........\n",str_Speed);        
-          
+if(Send_permite == true){
+    
 
-      CJT = readCJTemperature(cs);
-      printf("CJT1:%.2f\n",CJT);
-      i_Temp1 = round(f_Temp1);      
-      ADS1115_ReadADC(&thermo); 
-      f_Temp1 = thermocouple_read_temperature(1000.0*thermo.f_value,CJT-2.8,K_TYPE);
-      i_Temp1 = round(f_Temp1);
-      printf("TEMP=%.3f\n",f_Temp1);
-      memset(str_Temp,0,strlen(str_Temp));            
-      snprintf(str_Temp, sizeof(str_Temp), "T%d,",i_Temp1);
-      printf("Thermocouple STRING data= %s\n",str_Temp);
-      printf("\n.....................................\n");      
-//..............................................................................  
-      CAN_Pub(NodeSub_SensorCard1_Data, str_Temp, strlen(str_Temp));        
-                HAL_Delay(1);
-      CAN_Pub(NodeSub_SensorCard1_Data, str_Pressure, strlen(str_Pressure));        
-                HAL_Delay(1);
-      CAN_Pub(NodeSub_SensorCard1_Data, str_Speed, strlen(str_Speed));        
-                HAL_Delay(1);
-      CAN_Pub(NodeSub_SensorCard1_Data, str_R1, strlen(str_R1));        
-                HAL_Delay(1);
-      CAN_Pub(NodeSub_SensorCard1_Data, str_R2, strlen(str_R2));        
-                HAL_Delay(1);        
-HAL_GPIO_TogglePin(LED2_GPIO_Port,LED2_Pin);        
-        HAL_Delay(80);
+    pvalidation(Qpressure.List[Qpressure.Index]); 
+    pvalidation(pressure[inject].str);    
+    printf("pressure[inject]=%s\n",pressure[inject].str);
+    printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);         
+    CAN_Pub(NodeSub_SensorCard1_Data,pressure[inject].str,strlen(pressure[inject].str));
+    CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));
+    
+    pvalidation(Qspeed.List[Qpressure.Index]); 
+    pvalidation(speed[inject].str);     
+    printf("speed[inject]= %s\n",speed[inject].str);
+    printf("Qspeed.Index=%d,str=%s\n",Qspeed.Index,Qspeed.List[Qspeed.Index]); 
+    CAN_Pub(NodeSub_SensorCard1_Data,speed[inject].str,strlen(speed[inject].str));
+    CAN_Pub(NodeSub_SensorCard1_Data,Qspeed.List[Qspeed.Index],strlen(Qspeed.List[Qspeed.Index]));
+    
+    pvalidation(inject_r.str);       
+    printf("inject_r.str= %s\n",inject_r.str);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_r.str,strlen(inject_r.str));
+    Send_permite = false;    
+    }     
+       
+   //HAL_Delay(80);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

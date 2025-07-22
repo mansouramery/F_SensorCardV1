@@ -46,6 +46,7 @@ void Critical_system_Control_handler(volatile CAN_Message *CAN_messages, uint8_t
 
 void NodePub_SensorCard1_ACK_handler(volatile CAN_Message *CAN_messages, uint8_t Index){
     
+    
 }
 
 void NodePub_KeepAlive_handler(volatile CAN_Message *CAN_messages, uint8_t Index){
@@ -65,7 +66,8 @@ switch (CAN_messages[Index].id){
     break;
     case NodePub_SensorCard1_ACK:
       //NodeMainSub_RFID_MSG_handler(CAN_messages,Index);   
-      NodePub_SensorCard1_ACK_handler(CAN_messages,Index);       
+      NodePub_SensorCard1_ACK_handler(CAN_messages,Index); 
+      cycle_sync = true;    
         break;     
     case NodePub_KeepAlive:
       NodePub_KeepAlive_handler(CAN_messages,Index);        

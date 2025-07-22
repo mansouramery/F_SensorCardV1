@@ -31,6 +31,7 @@
 "sensorcardv1\max31856.o"
 "sensorcardv1\canfunc.o"
 "sensorcardv1\thermocouple.o"
+"sensorcardv1\calculate_fun.o"
 "sensorcardv1\retarget_io.o"
 --strict --scatter "SensorCardV1\SensorCardV1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

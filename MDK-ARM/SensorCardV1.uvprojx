@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Libs/ADS1115;../../MX31856Lib;..\..\..\..\01_OPCUA_WIFI\SOFTWARE_DESIGN\Control_logic\ControlLogic_02_RFID_CAN485\CAN_Uniform_V02\My_Libs\CAN_Confige;..\Libs\canFunc;..\Libs\thermocouple</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Libs/ADS1115;../../MX31856Lib;../../../../01_OPCUA_WIFI/SOFTWARE_DESIGN/Control_logic/ControlLogic_02_RFID_CAN485/CAN_Uniform_V02/My_Libs/CAN_Confige;../Libs/canFunc;../Libs/thermocouple;../Libs/inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -577,6 +577,16 @@
               <FileName>thermocouple.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Libs\thermocouple\thermocouple.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Calculate</GroupName>
+          <Files>
+            <File>
+              <FileName>calculate_fun.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libs\src\calculate_fun.c</FilePath>
             </File>
           </Files>
         </Group>

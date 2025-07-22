@@ -1,6 +1,9 @@
 #include "ads1115.h"
+#include "calculate_fun.h"
 #include "math.h"
 #include "stdio.h"
+
+extern Time time;
 
 
 //.................................................................
@@ -52,7 +55,9 @@ HAL_StatusTypeDef ADS1115_ReadConversion(int16_t *value,ADS1115_ADD addr)
     return status;
 }
 
-HAL_StatusTypeDef ADS1115_ReadADC(ADS1115_CH *adc_ch){  
+HAL_StatusTypeDef ADS1115_ReadADC(Analog *adc_ch){  
+    HAL_StatusTypeDef rt = HAL_OK;
+       
     if(adc_ch->pga_val == 0.0){
     switch (adc_ch->pga) {
         case ADS1115_PGA_6_144V:
@@ -82,35 +87,30 @@ HAL_StatusTypeDef ADS1115_ReadADC(ADS1115_CH *adc_ch){
     
         if (ADS1115_StartConversion(adc_ch->mux,adc_ch->addr,adc_ch->dr,adc_ch->pga) == HAL_OK)
         {
-            HAL_Delay(1);  // Wait for conversion (depends on data rate)
+            //HAL_Delay(1);  // Wait for conversion (depends on data rate)
             
             if (ADS1115_ReadConversion(&adc_ch->adc_value,adc_ch->addr) == HAL_OK)
             {
                 // Convert to voltage (depends on PGA setting)
-                adc_ch->f_value = (adc_ch->adc_value * adc_ch->pga_val) / 32768.0f;
-                adc_ch->i_value = round(1000*(adc_ch->gain)*(adc_ch->f_value));
-                //printf("I_VALUE=%d,GAIN=%f. F_VAL=%f\n",adc_ch->i_value,adc_ch->gain,adc_ch->f_value);
-                if((adc_ch->f_value) > (adc_ch->f_preval)){
-                adc_ch->i_maxval = adc_ch->i_value;
-                    adc_ch->f_preval = adc_ch->f_value;
-                }else{
-                    adc_ch->i_maxval = round(1000*adc_ch->gain*(adc_ch->f_preval));
-                    adc_ch->count++;
-                    //HAL_GPIO_TogglePin(LED4_GPIO_Port,LED4_Pin);                     
+                adc_ch->f_preval = adc_ch->f_value;
+                adc_ch->f_value = (adc_ch->gain)*((adc_ch->adc_value * adc_ch->pga_val) / 32768.0f);
+                //Get time
+                adc_ch->Tick_pre = adc_ch->Tick; 
+                adc_ch->Tick = time.t;
+                //adc_ch->i_value = round(1000*(adc_ch->gain)*(adc_ch->f_value));
+                
+                if((adc_ch->f_value) > (adc_ch->f_maxval)){
+                    adc_ch->f_maxval = adc_ch->f_value; 
                 }
-                if(adc_ch->count >adc_ch->rst_ct){
-                   adc_ch->count = 0; 
-                    adc_ch->f_preval = 0;
-                }
-                    
+             //printf("I_VALUE=%d,F_VAL=%f,max_Value=%f\n",adc_ch->i_value,adc_ch->f_value,adc_ch->f_maxval);    
             }
         } 
         else{
          printf("ADC EROOR\n");
+            rt = HAL_ERROR;
         }            
-    
-    
-    //printf("\nbbbbbbbb\n");
+    return rt;
+
 }
 
 

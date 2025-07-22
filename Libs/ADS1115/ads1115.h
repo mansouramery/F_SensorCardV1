@@ -3,10 +3,13 @@
 #include "main.h"
 
 
+
 #define ADS1115_REG_CONVERSION  0x00
 #define ADS1115_REG_CONFIG      0x01
 #define ADS1115_REG_LoThresh    0x02
 #define ADS1115_REG_HighThresh  0x03
+
+#define A_LEN 10
 
 // Configuration options
 typedef enum{
@@ -63,19 +66,29 @@ typedef struct{
  float f_maxval;
  int i_maxval;    
  int i_value;
-float pga_val;  
-float gain; 
-uint16_t rst_ct;    
-       
-}ADS1115_CH;
-
+ float pga_val;  
+ float gain; 
+ uint16_t rst_ct;    
+ uint32_t Tick;
+ uint32_t Tick_pre;
+ uint32_t Tickp; 
+ uint32_t Tickp_pre;      
+ char str[A_LEN];  
+ float speed;
+ float prespeed;
+ float maxspeed;
+ float minspeed;
+ int i_minspeed;
+ float dispalacement;    
+}Analog;
+  
 extern I2C_HandleTypeDef hi2c1;
 
 
 HAL_StatusTypeDef ADS1115_WriteConfig(ADS1115_MUX mux, ADS1115_PGA pga, ADS1115_MODE mode, ADS1115_DR dr,ADS1115_ADD addr);
 HAL_StatusTypeDef ADS1115_StartConversion(ADS1115_MUX mux,ADS1115_ADD addr,ADS1115_DR DR,ADS1115_PGA pga);
 HAL_StatusTypeDef ADS1115_ReadConversion(int16_t *value,ADS1115_ADD addr);
-HAL_StatusTypeDef ADS1115_ReadADC(ADS1115_CH *adc_ch);
+HAL_StatusTypeDef ADS1115_ReadADC(Analog *adc_ch);
 #endif
 
 

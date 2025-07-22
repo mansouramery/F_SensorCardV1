@@ -29,19 +29,25 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "calculate_fun.h"
 /* USER CODE END Includes */
 
 extern TIM_HandleTypeDef htim1;
 
+extern TIM_HandleTypeDef htim2;
+
 /* USER CODE BEGIN Private defines */
+//#define MAX_VAL 4294967295
+#define MAX_TIMER 4290000000
+extern Time time;
 
 /* USER CODE END Private defines */
 
 void MX_TIM1_Init(void);
+void MX_TIM2_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
