@@ -87,7 +87,7 @@ HAL_StatusTypeDef ADS1115_ReadADC(Analog *adc_ch){
     
         if (ADS1115_StartConversion(adc_ch->mux,adc_ch->addr,adc_ch->dr,adc_ch->pga) == HAL_OK)
         {
-            //HAL_Delay(1);  // Wait for conversion (depends on data rate)
+            HAL_Delay(1);  // Wait for conversion (depends on data rate)
             
             if (ADS1115_ReadConversion(&adc_ch->adc_value,adc_ch->addr) == HAL_OK)
             {

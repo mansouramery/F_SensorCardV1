@@ -190,11 +190,11 @@ if(htim->Instance == TIM1){
       time.t = 0;     
     }
 
-    test++;
-    if(test>10000){
-        cycle_sync = true;
-        test = 0;
-    }
+//    test++;
+//    if(test>10000){
+//        cycle_sync = true;
+//        test = 0;
+//    }
 }//TIM1    
  if(htim->Instance == TIM2){
 

@@ -49,31 +49,31 @@ void adc_init(void){
 
 for(uint8_t i =0;i<2;i++){  
 pressure[i].addr = ADS1115_ADD1;
-pressure[i].dr = ADS1115_DR_250SPS;
+pressure[i].dr = ADS1115_DR_860SPS;
 pressure[i].mux = ADS1115_MUX_AIN0_GND;
 pressure[i].pga = ADS1115_PGA_4_096V; 
 pressure[i].gain =  4.004;   
 pressure[i].rst_ct = 300;
   
 speed[i].addr = ADS1115_ADD1;
-speed[i].dr = ADS1115_DR_250SPS;;
+speed[i].dr = ADS1115_DR_860SPS;;
 speed[i].mux = ADS1115_MUX_AIN2_GND;
 speed[i].pga = ADS1115_PGA_4_096V; 
 speed[i].gain =  4.004;
 speed[i].rst_ct = 300;
 }
 
-inject_r.addr = ADS1115_ADD1;
-inject_r.dr = ADS1115_DR_250SPS;
-inject_r.mux = ADS1115_MUX_AIN0_GND;
+inject_r.addr = ADS1115_ADD2;
+inject_r.dr = ADS1115_DR_860SPS;
+inject_r.mux = ADS1115_MUX_AIN1_GND;
 inject_r.pga = ADS1115_PGA_4_096V; 
 inject_r.gain =  4.004;
 inject_r.rst_ct = 300;
 
 
-mold_r.addr = ADS1115_ADD1;
-mold_r.dr = ADS1115_DR_250SPS;
-mold_r.mux = ADS1115_MUX_AIN0_GND;
+mold_r.addr = ADS1115_ADD2;
+mold_r.dr = ADS1115_DR_860SPS;
+mold_r.mux = ADS1115_MUX_AIN3_GND;
 mold_r.pga = ADS1115_PGA_4_096V; 
 mold_r.gain =  4.004;
 mold_r.rst_ct = 300;
@@ -114,14 +114,14 @@ void analog_record(Analog *adc,char *header,VAL_opt opt){
     if(opt == MAX_VAL){
         //printf("f_maxval=%f\n",adc->f_maxval);
     adc->i_maxval = round(adc->f_maxval*1000); //mv
-    snprintf(adc->str, sizeof(adc->str), "%s%d,",header,adc->i_maxval);  
+    snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_maxval);  
         printf("AnalogMAX_str-> %s\n",adc->str);        
     }else if(opt == VALUE){
        adc->i_value = round(adc->f_value*1000); //mv 
-       snprintf(adc->str, sizeof(adc->str), "%s%d,",header,adc->i_value);  
+       snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_value);  
     }else if(opt == min_SPEED){  
       adc->i_minspeed = round(adc->minspeed)+0;
-      snprintf(adc->str, sizeof(adc->str), "%s%d,",header,adc->i_minspeed);
+      snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_minspeed);
       printf("AnalogMAX_SPEED_str-> %s\n\n",adc->str);        
     }  
     

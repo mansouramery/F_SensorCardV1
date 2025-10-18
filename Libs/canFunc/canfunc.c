@@ -34,6 +34,15 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan) {
   CAN_Buffer[CAN_WriteIndex].data[6] = rxData[6];
   CAN_Buffer[CAN_WriteIndex].data[7] = rxData[7];
   CAN_WriteIndex = (CAN_WriteIndex + 1) % CAN_BUFFER_SIZE;
+switch(rxHeader.StdId){
+    case NodePub_SensorCard1_MSG:
+         cycle_sync = true; 
+    break;
+    case NodeSub_SensorCard1_Data:
+       // printf("X\n");
+    break;
+        
+}  
 
 }
 

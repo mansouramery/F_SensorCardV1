@@ -58,7 +58,7 @@ int test = 0;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+volatile bool cycle_sync = false;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -69,12 +69,13 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 Analog thermo = {0};
 Analog pressure[2] = {{0}};
 Analog speed[2] = {{0}};
 Analog inject_r = {0};
 Analog mold_r = {0};
-volatile bool cycle_sync = false;
+
 volatile bool Send_permite = false;
 
 Queue Qspeed = {0};
@@ -171,21 +172,21 @@ if(cycle_sync == false){
     printf("\nvvvvvvvvvvvvCode here3\n");
     //inject pressure record    
     //printf("MAX-VALUE=%f",pressure[inject].f_maxval);
-    analog_record(&pressure[inject],"Ip",MAX_VAL);
+    analog_record(&pressure[inject],"P",MAX_VAL); // Inject pressure(Ip)
     analog_reset(&pressure[inject]);
     //mold close pressure record    
-    analog_record(&pressure[mold],"Mp",MAX_VAL);
+    analog_record(&pressure[mold],"p",MAX_VAL);// mold pressure(Mp)
     analog_queue(&Qpressure,pressure[mold].str);
     analog_reset(&pressure[mold]);     
     //inject speed record
-    analog_record(&speed[inject],"Is",MAX_VAL);
+    analog_record(&speed[inject],"S",MAX_VAL);// Inject speed(Is)
     analog_reset(&speed[inject]);
     //mold close speed record    
-    analog_record(&speed[mold],"Ms",MAX_VAL);
+    analog_record(&speed[mold],"s",MAX_VAL);// mold speed(Ms)
     analog_queue(&Qspeed,speed[mold].str);
     analog_reset(&speed[mold]);    
     //Inject speed record
-    analog_record(&inject_r,"Rs",min_SPEED);
+    analog_record(&inject_r,"R",min_SPEED);// Inject ruler speed(Rs)
     analog_reset(&inject_r);   
     analog_reset(&mold_r);
     
@@ -201,21 +202,24 @@ if(Send_permite == true){
     printf("pressure[inject]=%s\n",pressure[inject].str);
     printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);         
     CAN_Pub(NodeSub_SensorCard1_Data,pressure[inject].str,strlen(pressure[inject].str));
+    HAL_Delay(1);
     CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));
-    
+    HAL_Delay(1);    
     pvalidation(Qspeed.List[Qpressure.Index]); 
     pvalidation(speed[inject].str);     
     printf("speed[inject]= %s\n",speed[inject].str);
     printf("Qspeed.Index=%d,str=%s\n",Qspeed.Index,Qspeed.List[Qspeed.Index]); 
     CAN_Pub(NodeSub_SensorCard1_Data,speed[inject].str,strlen(speed[inject].str));
+    HAL_Delay(1);
     CAN_Pub(NodeSub_SensorCard1_Data,Qspeed.List[Qspeed.Index],strlen(Qspeed.List[Qspeed.Index]));
-    
+    HAL_Delay(1);    
     pvalidation(inject_r.str);       
-    printf("inject_r.str= %s\n",inject_r.str);
+    printf("inject_r speed= %s\n",inject_r.str);
     CAN_Pub(NodeSub_SensorCard1_Data,inject_r.str,strlen(inject_r.str));
     Send_permite = false;    
     }     
-       
+//      ADS1115_ReadADC(&inject_r);  
+//    //printf("ADC =%f\n",inject_r.f_value);
    //HAL_Delay(80);
     /* USER CODE END WHILE */
 

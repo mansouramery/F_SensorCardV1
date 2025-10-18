@@ -1,28 +1,123 @@
-# Ignore build output
-*.axf
-*.hex
-*.bin
-*.o
-*.d
+# STM32CubeIDE
+# Build and output files
+/Debug/
+/Release/
+*.launch
 *.map
-
-# Build and IDE-specific files
 *.o
 *.d
 *.elf
-*.map
 *.hex
 *.bin
+*.srec
 *.axf
-*.uvguix.*
-*.uvproj.*
-*.uvopt.*
-
-# CubeMX generated files
-*.ioc
-MX_*
-
-# Backup files
+# IDE-specific files
+.cproject
+.project
+.settings/
+*.ewp
+*.ewd
+*.eww
+# Generated makefiles and temporary files
+*.make
 *.bak
-*.swp
 *.tmp
+# User-specific settings
+*.cubeide
+
+# Keil uVision
+# Build and output files
+*.uvguix.*
+*.uvoptx
+*.uvprojx
+*.scvd
+*.dep
+*.lst
+*.sct
+*.crf
+*.tra
+*.htm
+*.sbr
+*.obj
+*.lib
+*.ar
+*.l
+*.i
+*.plg
+*.Opt
+*.Uv2
+*.Bak
+*.sfr
+# Log and temporary files
+*.log
+*.bak
+*.tmp
+*.uvl
+*.uvopt
+*.uvproj
+# Build directories
+/Objects/
+/Listings/
+/DebugConfig/
+*.build_log.htm
+
+# IAR Embedded Workbench
+# Build and output files
+*.ewp
+*.ewd
+*.eww
+*.dep
+*.o
+*.a
+*.s
+*.out
+*.map
+*.lst
+*.s43
+*.bin
+*.hex
+*.sim
+*.sfr
+# IDE-specific and configuration files
+*.ipcf
+*.icf
+*.dbgdt
+*.dni
+*.wsdt
+*.xcl
+*.menu
+*.i79
+# Build directories
+settings/
+Debug/
+Release/
+Obj/
+Exe/
+List/
+*.ewt
+*.eww.backup
+*.ewp.backup
+# Temporary and backup files
+*.bak
+*.tmp
+*.log
+
+# General
+# Backup and temporary files
+*.bak
+*.tmp
+*.log
+*.swp
+*.swo
+*.patch
+*.diff
+# Common IDE-generated directories
+/build/
+/bin/
+/out/
+/obj/
+# macOS-specific files
+.DS_Store
+# Windows-specific files
+Thumbs.db
+desktop.ini

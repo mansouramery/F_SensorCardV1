@@ -5,7 +5,7 @@
 #include "stdbool.h"
 #include "stdio.h"
 #include <string.h>
-#define CAN_BUFFER_SIZE 32
+#define CAN_BUFFER_SIZE 2
 
 extern CAN_HandleTypeDef hcan;
 extern volatile bool cycle_sync;
