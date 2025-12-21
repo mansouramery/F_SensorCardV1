@@ -102,6 +102,9 @@ HAL_StatusTypeDef ADS1115_ReadADC(Analog *adc_ch){
                 if((adc_ch->f_value) > (adc_ch->f_maxval)){
                     adc_ch->f_maxval = adc_ch->f_value; 
                 }
+                if((adc_ch->f_value) < (adc_ch->f_minval)){
+                    adc_ch->f_minval = adc_ch->f_value; 
+                }
              //printf("I_VALUE=%d,F_VAL=%f,max_Value=%f\n",adc_ch->i_value,adc_ch->f_value,adc_ch->f_maxval);    
             }
         } 

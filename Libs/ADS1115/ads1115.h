@@ -79,7 +79,11 @@ typedef struct{
  float maxspeed;
  float minspeed;
  int i_minspeed;
- float dispalacement;    
+ float dispalacement;
+// 
+ char str_posMin[A_LEN];
+ float f_minval; 
+ int   i_minval; 
 }Analog;
   
 extern I2C_HandleTypeDef hi2c1;

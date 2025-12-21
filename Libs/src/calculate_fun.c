@@ -48,39 +48,51 @@ void adc_init(void){
 //........................................ Test
 
 for(uint8_t i =0;i<2;i++){  
-pressure[i].addr = ADS1115_ADD1;
-pressure[i].dr = ADS1115_DR_860SPS;
-pressure[i].mux = ADS1115_MUX_AIN0_GND;
-pressure[i].pga = ADS1115_PGA_4_096V; 
-pressure[i].gain =  4.004;   
-pressure[i].rst_ct = 300;
+pressure1[i].addr = ADS1115_ADD1;
+pressure1[i].dr = ADS1115_DR_860SPS;
+pressure1[i].mux = ADS1115_MUX_AIN0_GND;
+pressure1[i].pga = ADS1115_PGA_4_096V; 
+pressure1[i].gain =  4.004;   
+pressure1[i].rst_ct = 300;
   
-speed[i].addr = ADS1115_ADD1;
-speed[i].dr = ADS1115_DR_860SPS;;
-speed[i].mux = ADS1115_MUX_AIN2_GND;
-speed[i].pga = ADS1115_PGA_4_096V; 
-speed[i].gain =  4.004;
-speed[i].rst_ct = 300;
+pressure2[i].addr = ADS1115_ADD1;
+pressure2[i].dr = ADS1115_DR_860SPS;;
+pressure2[i].mux = ADS1115_MUX_AIN2_GND;
+pressure2[i].pga = ADS1115_PGA_4_096V; 
+pressure2[i].gain =  4.004;
+pressure2[i].rst_ct = 300;
 }
 
-inject_r.addr = ADS1115_ADD2;
-inject_r.dr = ADS1115_DR_860SPS;
-inject_r.mux = ADS1115_MUX_AIN1_GND;
-inject_r.pga = ADS1115_PGA_4_096V; 
-inject_r.gain =  4.004;
-inject_r.rst_ct = 300;
+inject_rs.addr = ADS1115_ADD2;
+inject_rs.dr = ADS1115_DR_860SPS;
+inject_rs.mux = ADS1115_MUX_AIN1_GND;
+inject_rs.pga = ADS1115_PGA_4_096V; 
+inject_rs.gain =  4.004;
+inject_rs.rst_ct = 300;
+
+inject_rp.addr = ADS1115_ADD2;
+inject_rp.dr = ADS1115_DR_860SPS;
+inject_rp.mux = ADS1115_MUX_AIN1_GND;
+inject_rp.pga = ADS1115_PGA_4_096V; 
+inject_rp.gain =  4.004;
+inject_rp.rst_ct = 300;
 
 
-mold_r.addr = ADS1115_ADD2;
-mold_r.dr = ADS1115_DR_860SPS;
-mold_r.mux = ADS1115_MUX_AIN3_GND;
-mold_r.pga = ADS1115_PGA_4_096V; 
-mold_r.gain =  4.004;
-mold_r.rst_ct = 300;
+mold_rp.addr = ADS1115_ADD2;
+mold_rp.dr = ADS1115_DR_860SPS;
+mold_rp.mux = ADS1115_MUX_AIN3_GND;
+mold_rp.pga = ADS1115_PGA_4_096V; 
+mold_rp.gain =  4.004;
+mold_rp.rst_ct = 300;
 
-//.........................................
-    
-    
+mold_rs.addr = ADS1115_ADD2;
+mold_rs.dr = ADS1115_DR_860SPS;
+mold_rs.mux = ADS1115_MUX_AIN3_GND;
+mold_rs.pga = ADS1115_PGA_4_096V; 
+mold_rs.gain =  4.004;
+mold_rs.rst_ct = 300;
+
+       
 }
 
 
@@ -123,7 +135,12 @@ void analog_record(Analog *adc,char *header,VAL_opt opt){
       adc->i_minspeed = round(adc->minspeed)+0;
       snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_minspeed);
       printf("AnalogMAX_SPEED_str-> %s\n\n",adc->str);        
-    }  
+    }else if(opt == min_val){
+     adc->i_minval = round(adc->f_minval*1000); //mv
+     snprintf(adc->str_posMin, sizeof(adc->str_posMin), "%s%d",header,adc->i_minval);  
+     printf("AnalogMin_str-> %s\n",adc->str_posMin);   
+
+    }        
     
 }
 
@@ -160,7 +177,7 @@ void analog_reset(Analog *adc){
   adc->i_minspeed = 0;   
   adc->prespeed = 0.0;
   adc->maxspeed = 0.0;    
-    
+  adc->f_minval = 200; // over 
 }
 void analog_queue(Queue *Q,char* str){
     

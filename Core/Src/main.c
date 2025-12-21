@@ -71,15 +71,19 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 
 Analog thermo = {0};
-Analog pressure[2] = {{0}};
-Analog speed[2] = {{0}};
-Analog inject_r = {0};
-Analog mold_r = {0};
+Analog pressure1[2] = {{0}};
+Analog pressure2[2] = {{0}};
+Analog inject_rs = {0};
+Analog mold_rs = {0};
+Analog inject_rp = {0};
+Analog mold_rp = {0};
+Analog injectPressure = {0};
+Analog moldPressure= {0};
 
 volatile bool Send_permite = false;
 
-Queue Qspeed = {0};
 Queue Qpressure = {0};
+//Queue Qpressure2 = {0}; //speed -> pressure2
 
 /* USER CODE END 0 */
 
@@ -147,75 +151,108 @@ int main(void)
 ////..........................................................................
 if(cycle_sync == false){
     //tik = HAL_GetTick();
-    if(cal_speed(&inject_r,BASE_500us) < offset_4_0){  
+    if(cal_speed(&inject_rs,BASE_500us) < offset_4_0){  
         //printf("\nxxxxxxxxCode here1\n");
         //printf("inject_r speed= %f\n",inject_r.minspeed);
         //printf("Value=%f,preValue=%f\n",inject_r.f_value,inject_r.f_preval);        
-      ADS1115_ReadADC(&pressure[inject]); 
-      ADS1115_ReadADC(&speed[inject]);
+      ADS1115_ReadADC(&pressure1[inject]); 
+      ADS1115_ReadADC(&pressure2[inject]);
+        //
+      ADS1115_ReadADC(&inject_rp);     
 //    if(inject_r.speed < inject_r.minspeed){
 //         inject_r.minspeed = inject_r.speed;
 //     }    
     }    
         //tok = HAL_GetTick();
     //printf("execution_Time=%d\n",tok-tik);
-    if(cal_speed(&mold_r,BASE_500us) < offset_4_0){
+    if(cal_speed(&mold_rs,BASE_500us) < offset_4_0){
         //printf("\nxxxxxxxxCode here2\n");
         //printf("mold_r speed= %f\n",mold_r.minspeed);  
         //printf("Value=%f,preValue=%f\n",mold_r.f_value,mold_r.f_preval);          
-      ADS1115_ReadADC(&pressure[mold]); 
-      ADS1115_ReadADC(&speed[mold]);  
+      ADS1115_ReadADC(&pressure1[mold]); 
+      ADS1115_ReadADC(&pressure2[mold]);
+//        
+      ADS1115_ReadADC(&mold_rp);        
         
     }       
 }else{
     HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-    printf("\nvvvvvvvvvvvvCode here3\n");
-    //inject pressure record    
-    //printf("MAX-VALUE=%f",pressure[inject].f_maxval);
-    analog_record(&pressure[inject],"P",MAX_VAL); // Inject pressure(Ip)
-    analog_reset(&pressure[inject]);
-    //mold close pressure record    
-    analog_record(&pressure[mold],"p",MAX_VAL);// mold pressure(Mp)
-    analog_queue(&Qpressure,pressure[mold].str);
-    analog_reset(&pressure[mold]);     
-    //inject speed record
-    analog_record(&speed[inject],"S",MAX_VAL);// Inject speed(Is)
-    analog_reset(&speed[inject]);
-    //mold close speed record    
-    analog_record(&speed[mold],"s",MAX_VAL);// mold speed(Ms)
-    analog_queue(&Qspeed,speed[mold].str);
-    analog_reset(&speed[mold]);    
-    //Inject speed record
-    analog_record(&inject_r,"R",min_SPEED);// Inject ruler speed(Rs)
-    analog_reset(&inject_r);   
-    analog_reset(&mold_r);
+//    printf("\nvvvvvvvvvvvvCode here3\n");
+    //inject pressure1 record    
+    //printf("MAX-VALUE=%f",pressure1[inject].f_maxval);
+    analog_record(&pressure1[inject],"P1I",MAX_VAL); // Inject pressure(Ip)P1I
+    analog_record(&pressure2[inject],"P2I",MAX_VAL);// Inject pressure2(Ip)P2I
+    injectPressure.i_maxval = pressure1[inject].i_maxval + pressure2[inject].i_maxval;   
+    snprintf(injectPressure.str, sizeof(injectPressure.str), "P%d",injectPressure.i_maxval);  
+    analog_reset(&pressure2[inject]);
+    analog_reset(&pressure1[inject]);    
+
+    //mold close pressure1 record    
+    analog_record(&pressure1[mold],"P1M",MAX_VAL);// mold pressure1(Mp)P1M
+    analog_record(&pressure2[mold],"P2M",MAX_VAL);// mold pressure2(Mp)P2M 
+    moldPressure.i_maxval = pressure1[mold].i_maxval + pressure2[mold].i_maxval;   
+    snprintf(moldPressure.str, sizeof(moldPressure.str), "p%d",moldPressure.i_maxval);     
+    analog_queue(&Qpressure,moldPressure.str);    
+    analog_reset(&pressure2[mold]);    
+    analog_reset(&pressure1[mold]);
     
+    analog_record(&inject_rs,"S",min_SPEED);// Inject ruler (Rs)RIS
+    analog_record(&mold_rs,"s",min_SPEED);// mold ruler (Rs) RMS   
+
+    analog_record(&inject_rp,"i",min_val);//RIm
+    analog_record(&mold_rp,"m",min_val);//  RMm
+    analog_record(&inject_rp,"I",MAX_VAL);//RIM 
+    analog_record(&mold_rp,"M",MAX_VAL);//RMM 
+    
+    analog_reset(&inject_rs);   
+    analog_reset(&mold_rs);
+    analog_reset(&inject_rp);   
+    analog_reset(&mold_rp);    
+
     cycle_sync = false;
     Send_permite = true;    
 }
 
 if(Send_permite == true){
     
-
+// inject
     pvalidation(Qpressure.List[Qpressure.Index]); 
-    pvalidation(pressure[inject].str);    
-    printf("pressure[inject]=%s\n",pressure[inject].str);
+    pvalidation(injectPressure.str);    
+    printf("injectPressure=%s\n",injectPressure.str);
     printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);         
-    CAN_Pub(NodeSub_SensorCard1_Data,pressure[inject].str,strlen(pressure[inject].str));
-    HAL_Delay(1);
+    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.str,strlen(injectPressure.str));
     CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));
-    HAL_Delay(1);    
-    pvalidation(Qspeed.List[Qpressure.Index]); 
-    pvalidation(speed[inject].str);     
-    printf("speed[inject]= %s\n",speed[inject].str);
-    printf("Qspeed.Index=%d,str=%s\n",Qspeed.Index,Qspeed.List[Qspeed.Index]); 
-    CAN_Pub(NodeSub_SensorCard1_Data,speed[inject].str,strlen(speed[inject].str));
-    HAL_Delay(1);
-    CAN_Pub(NodeSub_SensorCard1_Data,Qspeed.List[Qspeed.Index],strlen(Qspeed.List[Qspeed.Index]));
-    HAL_Delay(1);    
-    pvalidation(inject_r.str);       
-    printf("inject_r speed= %s\n",inject_r.str);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_r.str,strlen(inject_r.str));
+    
+//mold close
+    pvalidation(moldPressure.str);    
+    printf("moldPressure=%s\n",moldPressure.str);
+    CAN_Pub(NodeSub_SensorCard1_Data,moldPressure.str,strlen(moldPressure.str));
+//inject ruler speed    
+    pvalidation(inject_rs.str);       
+    printf("inject_rspeed = %s\n",inject_rs.str);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rs.str,strlen(inject_rs.str));
+//mold ruler speed
+    pvalidation(mold_rs.str);       
+    printf("mold_rspeed = %s\n",mold_rs.str);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rs.str,strlen(mold_rs.str));
+ //inject ruler min position   
+    pvalidation(inject_rp.str_posMin);       
+    printf("inject_rpos(min)= %s\n",inject_rp.str_posMin);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.str_posMin,strlen(inject_rp.str_posMin));
+ //mold ruler min position     
+    pvalidation(mold_rp.str_posMin);       
+    printf("mold_rpos(min)= %s\n",mold_rp.str_posMin);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.str_posMin,strlen(mold_rp.str_posMin));
+ //inject ruler max position     
+    pvalidation(inject_rp.str);       
+    printf("inject_rpos(MAX)= %s\n",inject_rp.str);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.str,strlen(inject_rp.str));    
+ //mold ruler max position     
+    pvalidation(mold_rp.str);       
+    printf("mold_rpos(MAX)= %s\n",mold_rp.str);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.str,strlen(mold_rp.str));  
+
+
     Send_permite = false;    
     }     
 //      ADS1115_ReadADC(&inject_r);  

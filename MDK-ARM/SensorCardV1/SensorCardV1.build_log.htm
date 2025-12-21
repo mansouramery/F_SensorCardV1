@@ -27,7 +27,50 @@ Project File Date:  08/23/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'F:\Keil5_31\Setup\ARM\ARMCC\Bin'
 Build target 'SensorCardV1'
-"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Libs/inc/calculate_fun.h(67): warning:  #1-D: last line of file ends without a newline
+  #endif
+../../MX31856Lib/max31856.h(116): warning:  #1-D: last line of file ends without a newline
+  #endif // MAX31856_H
+../Libs/thermocouple/thermocouple.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif // THERMOCOUPLE_H
+../Core/Src/main.c(73): warning:  #188-D: enumerated type mixed with another type
+  Analog thermo = {0};
+../Core/Src/main.c(74): warning:  #188-D: enumerated type mixed with another type
+  Analog pressure1[2] = {{0}};
+../Core/Src/main.c(75): warning:  #188-D: enumerated type mixed with another type
+  Analog pressure2[2] = {{0}};
+../Core/Src/main.c(76): warning:  #188-D: enumerated type mixed with another type
+  Analog inject_rs = {0};
+../Core/Src/main.c(77): warning:  #188-D: enumerated type mixed with another type
+  Analog mold_rs = {0};
+../Core/Src/main.c(78): warning:  #188-D: enumerated type mixed with another type
+  Analog inject_rp = {0};
+../Core/Src/main.c(79): warning:  #188-D: enumerated type mixed with another type
+  Analog mold_rp = {0};
+../Core/Src/main.c(80): warning:  #188-D: enumerated type mixed with another type
+  Analog injectPressure = {0};
+../Core/Src/main.c(81): warning:  #188-D: enumerated type mixed with another type
+  Analog moldPressure= {0};
+../Core/Src/main.c(142): warning:  #177-D: variable "tik"  was declared but never referenced
+      uint32_t tik = 0, tok = 0;
+../Core/Src/main.c(142): warning:  #177-D: variable "tok"  was declared but never referenced
+      uint32_t tik = 0, tok = 0;
+../Core/Src/main.c(143): warning:  #177-D: variable "opt"  was declared but never referenced
+      VAL_opt opt;
+../Core/Src/main.c: 16 warnings, 0 errors
+compiling calculate_fun.c...
+../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Libs/inc/calculate_fun.h(67): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libs\src\calculate_fun.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=27032 RO-data=356 RW-data=52 ZI-data=3684  
+FromELF: creating hex file...
+"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -60,7 +103,7 @@ Package Vendor: Keil
 
    * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:ITM:1.2.0
       Source file:   Source\retarget_io.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:11
 </pre>
 </body>
 </html>

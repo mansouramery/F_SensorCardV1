@@ -11,10 +11,12 @@
 #define mold 1  
 
 extern Analog thermo;
-extern Analog pressure[2];
-extern Analog speed[2];
-extern Analog inject_r;
-extern Analog mold_r;
+extern Analog pressure1[2];
+extern Analog pressure2[2];
+extern Analog inject_rs;
+extern Analog mold_rs;
+extern Analog inject_rp;
+extern Analog mold_rp;
 
 extern const float  offset_0;
 extern const float offset_0_1; 
@@ -48,7 +50,8 @@ typedef enum{
    VALUE,
    SPEED,
    MAX_SPEED,
-   min_SPEED    
+   min_SPEED,
+   min_val    
 }VAL_opt;
 
 
