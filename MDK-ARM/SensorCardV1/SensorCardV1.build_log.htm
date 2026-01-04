@@ -27,6 +27,18 @@ Project File Date:  08/23/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'F:\Keil5_31\Setup\ARM\ARMCC\Bin'
 Build target 'SensorCardV1'
+compiling ads1115.c...
+../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Libs/inc/calculate_fun.h(67): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libs\ADS1115\ads1115.c: 2 warnings, 0 errors
+compiling calculate_fun.c...
+../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Libs/inc/calculate_fun.h(67): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libs\src\calculate_fun.c: 2 warnings, 0 errors
 compiling main.c...
 ../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -54,23 +66,23 @@ compiling main.c...
   Analog injectPressure = {0};
 ../Core/Src/main.c(81): warning:  #188-D: enumerated type mixed with another type
   Analog moldPressure= {0};
-../Core/Src/main.c(142): warning:  #177-D: variable "tik"  was declared but never referenced
+../Core/Src/main.c(145): warning:  #177-D: variable "tik"  was declared but never referenced
       uint32_t tik = 0, tok = 0;
-../Core/Src/main.c(142): warning:  #177-D: variable "tok"  was declared but never referenced
+../Core/Src/main.c(145): warning:  #177-D: variable "tok"  was declared but never referenced
       uint32_t tik = 0, tok = 0;
-../Core/Src/main.c(143): warning:  #177-D: variable "opt"  was declared but never referenced
+../Core/Src/main.c(146): warning:  #177-D: variable "opt"  was declared but never referenced
       VAL_opt opt;
 ../Core/Src/main.c: 16 warnings, 0 errors
-compiling calculate_fun.c...
+compiling tim.c...
 ../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
   #endif
 ../Libs/inc/calculate_fun.h(67): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Libs\src\calculate_fun.c: 2 warnings, 0 errors
+../Core/Src/tim.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=27032 RO-data=356 RW-data=52 ZI-data=3684  
+Program Size: Code=27432 RO-data=356 RW-data=52 ZI-data=3788  
 FromELF: creating hex file...
-"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 18 Warning(s).
+"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -103,7 +115,7 @@ Package Vendor: Keil
 
    * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:ITM:1.2.0
       Source file:   Source\retarget_io.c
-Build Time Elapsed:  00:00:11
+Build Time Elapsed:  00:00:12
 </pre>
 </body>
 </html>

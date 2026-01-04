@@ -123,22 +123,31 @@ if((adc->speed < adc->minspeed) && (adc->speed<offset_1_0)){
 void analog_record(Analog *adc,char *header,VAL_opt opt){
       //memset(str_Temp,0,strlen(str_Temp));   
     adc->str[0] = '\0';
+	adc->data_hex[0] = header[0];    
     if(opt == MAX_VAL){
         //printf("f_maxval=%f\n",adc->f_maxval);
     adc->i_maxval = round(adc->f_maxval*1000); //mv
     snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_maxval);  
-        printf("AnalogMAX_str-> %s\n",adc->str);        
+        printf("AnalogMAX_str-> %s\n",adc->str);  
+	adc->data_hex[1] = (adc->i_maxval >>8)&0xFF; //high
+	adc->data_hex[2] =  adc->i_maxval&0xFF; //low        
     }else if(opt == VALUE){
        adc->i_value = round(adc->f_value*1000); //mv 
        snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_value);  
+	adc->data_hex[1] = (adc->i_value >>8)&0xFF; //high
+	adc->data_hex[2] =  adc->i_value&0xFF; //low         
     }else if(opt == min_SPEED){  
       adc->i_minspeed = round(adc->minspeed)+0;
       snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_minspeed);
-      printf("AnalogMAX_SPEED_str-> %s\n\n",adc->str);        
+      printf("AnalogMAX_SPEED_str-> %s\n\n",adc->str); 
+ 	adc->data_hex[1] = (adc->i_minspeed >>8)&0xFF; //high
+	adc->data_hex[2] =  adc->i_minspeed&0xFF; //low         
     }else if(opt == min_val){
      adc->i_minval = round(adc->f_minval*1000); //mv
      snprintf(adc->str_posMin, sizeof(adc->str_posMin), "%s%d",header,adc->i_minval);  
-     printf("AnalogMin_str-> %s\n",adc->str_posMin);   
+     printf("AnalogMin_str-> %s\n",adc->str_posMin); 
+ 	adc->data_hex[1] = (adc->i_minval >>8)&0xFF; //high
+	adc->data_hex[2] =  adc->i_minval&0xFF; //low          
 
     }        
     
@@ -178,6 +187,10 @@ void analog_reset(Analog *adc){
   adc->prespeed = 0.0;
   adc->maxspeed = 0.0;    
   adc->f_minval = 200; // over 
+  adc->data_hex[0] = 0;
+  adc->data_hex[1] = 0;
+  adc->data_hex[2] = 0;
+    
 }
 void analog_queue(Queue *Q,char* str){
     

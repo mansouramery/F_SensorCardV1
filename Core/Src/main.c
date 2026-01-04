@@ -83,6 +83,9 @@ Analog moldPressure= {0};
 volatile bool Send_permite = false;
 
 Queue Qpressure = {0};
+Queue QrulerSpeed = {0};
+Queue QrulerMinPos = {0};
+Queue QrulerMaxPos = {0};
 //Queue Qpressure2 = {0}; //speed -> pressure2
 
 /* USER CODE END 0 */
@@ -183,7 +186,10 @@ if(cycle_sync == false){
     analog_record(&pressure1[inject],"P1I",MAX_VAL); // Inject pressure(Ip)P1I
     analog_record(&pressure2[inject],"P2I",MAX_VAL);// Inject pressure2(Ip)P2I
     injectPressure.i_maxval = pressure1[inject].i_maxval + pressure2[inject].i_maxval;   
-    snprintf(injectPressure.str, sizeof(injectPressure.str), "P%d",injectPressure.i_maxval);  
+    snprintf(injectPressure.str, sizeof(injectPressure.str), "P%d",injectPressure.i_maxval); 
+    injectPressure.data_hex[0] = 'P';
+    injectPressure.data_hex[1] = (injectPressure.i_maxval >>8)&0xFF; 
+    injectPressure.data_hex[2] =  injectPressure.i_maxval&0xFF;     
     analog_reset(&pressure2[inject]);
     analog_reset(&pressure1[inject]);    
 
@@ -191,18 +197,25 @@ if(cycle_sync == false){
     analog_record(&pressure1[mold],"P1M",MAX_VAL);// mold pressure1(Mp)P1M
     analog_record(&pressure2[mold],"P2M",MAX_VAL);// mold pressure2(Mp)P2M 
     moldPressure.i_maxval = pressure1[mold].i_maxval + pressure2[mold].i_maxval;   
-    snprintf(moldPressure.str, sizeof(moldPressure.str), "p%d",moldPressure.i_maxval);     
+    snprintf(moldPressure.str, sizeof(moldPressure.str), "p%d",moldPressure.i_maxval);
+    moldPressure.data_hex[0] = 'p';
+    moldPressure.data_hex[1] = (moldPressure.i_maxval >>8)&0xFF; 
+    moldPressure.data_hex[2] =  moldPressure.i_maxval&0xFF;     
     analog_queue(&Qpressure,moldPressure.str);    
     analog_reset(&pressure2[mold]);    
     analog_reset(&pressure1[mold]);
     
     analog_record(&inject_rs,"S",min_SPEED);// Inject ruler (Rs)RIS
     analog_record(&mold_rs,"s",min_SPEED);// mold ruler (Rs) RMS   
-
+    analog_queue(&QrulerSpeed,mold_rs.str);
+    
     analog_record(&inject_rp,"i",min_val);//RIm
     analog_record(&mold_rp,"m",min_val);//  RMm
+    analog_queue(&QrulerMinPos,mold_rp.str_posMin); 
+    
     analog_record(&inject_rp,"I",MAX_VAL);//RIM 
     analog_record(&mold_rp,"M",MAX_VAL);//RMM 
+    analog_queue(&QrulerMaxPos,mold_rp.str);
     
     analog_reset(&inject_rs);   
     analog_reset(&mold_rs);
@@ -219,38 +232,51 @@ if(Send_permite == true){
     pvalidation(Qpressure.List[Qpressure.Index]); 
     pvalidation(injectPressure.str);    
     printf("injectPressure=%s\n",injectPressure.str);
-    printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);         
-    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.str,strlen(injectPressure.str));
-    CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));
+    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.str,strlen(injectPressure.str));   
     
 //mold close
+    pvalidation(Qpressure.List[Qpressure.Index]);     
     pvalidation(moldPressure.str);    
     printf("moldPressure=%s\n",moldPressure.str);
+    printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);             
     CAN_Pub(NodeSub_SensorCard1_Data,moldPressure.str,strlen(moldPressure.str));
+    CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));  
+    
 //inject ruler speed    
     pvalidation(inject_rs.str);       
     printf("inject_rspeed = %s\n",inject_rs.str);
     CAN_Pub(NodeSub_SensorCard1_Data,inject_rs.str,strlen(inject_rs.str));
+    
 //mold ruler speed
+    pvalidation(QrulerSpeed.List[QrulerSpeed.Index]);     
     pvalidation(mold_rs.str);       
     printf("mold_rspeed = %s\n",mold_rs.str);
     CAN_Pub(NodeSub_SensorCard1_Data,mold_rs.str,strlen(mold_rs.str));
+    CAN_Pub(NodeSub_SensorCard1_Data,QrulerSpeed.List[QrulerSpeed.Index],strlen(QrulerSpeed.List[QrulerSpeed.Index]));   
+    
  //inject ruler min position   
     pvalidation(inject_rp.str_posMin);       
     printf("inject_rpos(min)= %s\n",inject_rp.str_posMin);
     CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.str_posMin,strlen(inject_rp.str_posMin));
- //mold ruler min position     
+    
+ //mold ruler min position
+    pvalidation(QrulerMinPos.List[QrulerMinPos.Index]);      
     pvalidation(mold_rp.str_posMin);       
     printf("mold_rpos(min)= %s\n",mold_rp.str_posMin);
     CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.str_posMin,strlen(mold_rp.str_posMin));
+    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMinPos.List[QrulerMinPos.Index],strlen(QrulerMinPos.List[QrulerMinPos.Index]));   
+    
  //inject ruler max position     
     pvalidation(inject_rp.str);       
     printf("inject_rpos(MAX)= %s\n",inject_rp.str);
     CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.str,strlen(inject_rp.str));    
- //mold ruler max position     
+    
+ //mold ruler max position    
+    pvalidation(QrulerMaxPos.List[QrulerMaxPos.Index]);  
     pvalidation(mold_rp.str);       
     printf("mold_rpos(MAX)= %s\n",mold_rp.str);
     CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.str,strlen(mold_rp.str));  
+    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMaxPos.List[QrulerMaxPos.Index],strlen(QrulerMaxPos.List[QrulerMaxPos.Index]));    
 
 
     Send_permite = false;    
