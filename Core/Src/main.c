@@ -39,6 +39,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 #define Q_LEN 2
+#define HEX_LEN 3+1 //(3data)
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -139,8 +140,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   printf("\nStart...\n");  
   // init the board
-    max_begin(1);
-    setThermocoupleType(MAX31856_ICTYPE_K,1);
+//    max_begin(1);
+//    setThermocoupleType(MAX31856_ICTYPE_K,1);
     adc_init();  
     uint32_t tik = 0, tok = 0;
     VAL_opt opt;
@@ -231,52 +232,52 @@ if(Send_permite == true){
 // inject
     pvalidation(Qpressure.List[Qpressure.Index]); 
     pvalidation(injectPressure.str);    
-    printf("injectPressure=%s\n",injectPressure.str);
-    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.str,strlen(injectPressure.str));   
+    printf("injectPressure=%d\n",injectPressure.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.data_hex,HEX_LEN);   
     
 //mold close
     pvalidation(Qpressure.List[Qpressure.Index]);     
     pvalidation(moldPressure.str);    
-    printf("moldPressure=%s\n",moldPressure.str);
-    printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);             
-    CAN_Pub(NodeSub_SensorCard1_Data,moldPressure.str,strlen(moldPressure.str));
-    CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));  
+    printf("moldPressure=%d\n",moldPressure.i_maxval);
+//    printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);             
+    CAN_Pub(NodeSub_SensorCard1_Data,moldPressure.data_hex,HEX_LEN);
+//    CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));  
     
 //inject ruler speed    
     pvalidation(inject_rs.str);       
-    printf("inject_rspeed = %s\n",inject_rs.str);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_rs.str,strlen(inject_rs.str));
+    printf("inject_rspeed = %d\n",inject_rs.i_minspeed);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rs.data_hex,HEX_LEN);
     
 //mold ruler speed
     pvalidation(QrulerSpeed.List[QrulerSpeed.Index]);     
     pvalidation(mold_rs.str);       
-    printf("mold_rspeed = %s\n",mold_rs.str);
-    CAN_Pub(NodeSub_SensorCard1_Data,mold_rs.str,strlen(mold_rs.str));
-    CAN_Pub(NodeSub_SensorCard1_Data,QrulerSpeed.List[QrulerSpeed.Index],strlen(QrulerSpeed.List[QrulerSpeed.Index]));   
+    printf("mold_rspeed = %d\n",mold_rs.i_minspeed);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rs.data_hex,HEX_LEN);
+//    CAN_Pub(NodeSub_SensorCard1_Data,QrulerSpeed.List[QrulerSpeed.Index],strlen(QrulerSpeed.List[QrulerSpeed.Index]));   
     
  //inject ruler min position   
     pvalidation(inject_rp.str_posMin);       
-    printf("inject_rpos(min)= %s\n",inject_rp.str_posMin);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.str_posMin,strlen(inject_rp.str_posMin));
+    printf("inject_rpos(min)= %d\n",inject_rp.i_minval);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.data_hex,HEX_LEN);
     
  //mold ruler min position
     pvalidation(QrulerMinPos.List[QrulerMinPos.Index]);      
     pvalidation(mold_rp.str_posMin);       
-    printf("mold_rpos(min)= %s\n",mold_rp.str_posMin);
-    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.str_posMin,strlen(mold_rp.str_posMin));
-    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMinPos.List[QrulerMinPos.Index],strlen(QrulerMinPos.List[QrulerMinPos.Index]));   
+    printf("mold_rpos(min)= %d\n",mold_rp.i_minval);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.data_hex,HEX_LEN);
+//    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMinPos.List[QrulerMinPos.Index],strlen(QrulerMinPos.List[QrulerMinPos.Index]));   
     
  //inject ruler max position     
     pvalidation(inject_rp.str);       
-    printf("inject_rpos(MAX)= %s\n",inject_rp.str);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.str,strlen(inject_rp.str));    
+    printf("inject_rpos(MAX)= %d\n",inject_rp.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.data_hex,HEX_LEN);    
     
  //mold ruler max position    
     pvalidation(QrulerMaxPos.List[QrulerMaxPos.Index]);  
     pvalidation(mold_rp.str);       
-    printf("mold_rpos(MAX)= %s\n",mold_rp.str);
-    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.str,strlen(mold_rp.str));  
-    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMaxPos.List[QrulerMaxPos.Index],strlen(QrulerMaxPos.List[QrulerMaxPos.Index]));    
+    printf("mold_rpos(MAX)= %d\n",mold_rp.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.data_hex,HEX_LEN);  
+//    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMaxPos.List[QrulerMaxPos.Index],strlen(QrulerMaxPos.List[QrulerMaxPos.Index]));    
 
 
     Send_permite = false;    
