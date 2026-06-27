@@ -83,8 +83,12 @@ typedef struct{
 // 
  char str_posMin[A_LEN];
  float f_minval; 
- int   i_minval; 
- uint8_t data_hex[3];
+ int   i_minval;
+ uint8_t dataMin_hex[3]; 
+ uint8_t dataLast_hex[3];
+ uint8_t dataMax_hex[3];
+ uint8_t dataSpeedMin_hex[3];
+ uint8_t dataSpeedMax_hex[3];
 }Analog;
   
 extern I2C_HandleTypeDef hi2c1;

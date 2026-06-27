@@ -1,0 +1,8 @@
+P1-------->Inject pressure
+P2-------->Mold pressure
+RS1------->Inject ruler speed
+RS2------->Mold ruler speed
+RS3------->Inject ruler min position
+RL1------->Mold ruler min position
+RL2------->Inject ruler max position
+RL3------->Mold ruler max position

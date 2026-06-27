@@ -153,58 +153,43 @@ int main(void)
   {       
 
 ////..........................................................................
+      
 if(cycle_sync == false){
     //tik = HAL_GetTick();
-    if(cal_speed(&inject_rs,BASE_500us) < offset_4_0){  
-        //printf("\nxxxxxxxxCode here1\n");
-        //printf("inject_r speed= %f\n",inject_r.minspeed);
-        //printf("Value=%f,preValue=%f\n",inject_r.f_value,inject_r.f_preval);        
+    if(cal_speed(&inject_rs,BASE_500us) < offset_4_0){        
       ADS1115_ReadADC(&pressure1[inject]); 
       ADS1115_ReadADC(&pressure2[inject]);
-        //
-      ADS1115_ReadADC(&inject_rp);     
-//    if(inject_r.speed < inject_r.minspeed){
-//         inject_r.minspeed = inject_r.speed;
-//     }    
+      ADS1115_ReadADC(&inject_rp);        
     }    
-        //tok = HAL_GetTick();
-    //printf("execution_Time=%d\n",tok-tik);
-    if(cal_speed(&mold_rs,BASE_500us) < offset_4_0){
-        //printf("\nxxxxxxxxCode here2\n");
-        //printf("mold_r speed= %f\n",mold_r.minspeed);  
-        //printf("Value=%f,preValue=%f\n",mold_r.f_value,mold_r.f_preval);          
+    if(cal_speed(&mold_rs,BASE_500us) < offset_4_0){        
       ADS1115_ReadADC(&pressure1[mold]); 
       ADS1115_ReadADC(&pressure2[mold]);
-//        
       ADS1115_ReadADC(&mold_rp);        
         
     }       
 }else{
     HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-//    printf("\nvvvvvvvvvvvvCode here3\n");
-    //inject pressure1 record    
-    //printf("MAX-VALUE=%f",pressure1[inject].f_maxval);
+    
     analog_record(&pressure1[inject],"P1I",MAX_VAL); // Inject pressure(Ip)P1I
     analog_record(&pressure2[inject],"P2I",MAX_VAL);// Inject pressure2(Ip)P2I
+    
     injectPressure.i_maxval = pressure1[inject].i_maxval + pressure2[inject].i_maxval;   
     snprintf(injectPressure.str, sizeof(injectPressure.str), "P%d",injectPressure.i_maxval); 
-    injectPressure.data_hex[0] = 'P';
-    injectPressure.data_hex[1] = (injectPressure.i_maxval >>8)&0xFF; 
-    injectPressure.data_hex[2] =  injectPressure.i_maxval&0xFF;     
-    analog_reset(&pressure2[inject]);
-    analog_reset(&pressure1[inject]);    
+    injectPressure.dataMax_hex[0] = 'P';
+    injectPressure.dataMax_hex[1] = (injectPressure.i_maxval >>8)&0xFF; 
+    injectPressure.dataMax_hex[2] =  injectPressure.i_maxval&0xFF;       
 
     //mold close pressure1 record    
     analog_record(&pressure1[mold],"P1M",MAX_VAL);// mold pressure1(Mp)P1M
     analog_record(&pressure2[mold],"P2M",MAX_VAL);// mold pressure2(Mp)P2M 
+    
     moldPressure.i_maxval = pressure1[mold].i_maxval + pressure2[mold].i_maxval;   
     snprintf(moldPressure.str, sizeof(moldPressure.str), "p%d",moldPressure.i_maxval);
-    moldPressure.data_hex[0] = 'p';
-    moldPressure.data_hex[1] = (moldPressure.i_maxval >>8)&0xFF; 
-    moldPressure.data_hex[2] =  moldPressure.i_maxval&0xFF;     
+    moldPressure.dataMax_hex[0] = 'p';
+    moldPressure.dataMax_hex[1] = (moldPressure.i_maxval >>8)&0xFF; 
+    moldPressure.dataMax_hex[2] =  moldPressure.i_maxval&0xFF;     
     analog_queue(&Qpressure,moldPressure.str);    
-    analog_reset(&pressure2[mold]);    
-    analog_reset(&pressure1[mold]);
+
     
     analog_record(&inject_rs,"S",min_SPEED);// Inject ruler (Rs)RIS
     analog_record(&mold_rs,"s",min_SPEED);// mold ruler (Rs) RMS   
@@ -218,73 +203,71 @@ if(cycle_sync == false){
     analog_record(&mold_rp,"M",MAX_VAL);//RMM 
     analog_queue(&QrulerMaxPos,mold_rp.str);
     
-    analog_reset(&inject_rs);   
-    analog_reset(&mold_rs);
-    analog_reset(&inject_rp);   
-    analog_reset(&mold_rp);    
-
+   
     cycle_sync = false;
     Send_permite = true;    
 }
 
 if(Send_permite == true){
     
-// inject
+ // inject
     pvalidation(Qpressure.List[Qpressure.Index]); 
     pvalidation(injectPressure.str);    
-    printf("injectPressure=%d\n",injectPressure.i_maxval);
-    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.data_hex,HEX_LEN);   
+    printf("injectPressure(max)=%d\n",injectPressure.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,injectPressure.dataMax_hex,HEX_LEN);   
     
-//mold close
+ //mold close
     pvalidation(Qpressure.List[Qpressure.Index]);     
     pvalidation(moldPressure.str);    
-    printf("moldPressure=%d\n",moldPressure.i_maxval);
-//    printf("Qpressure.Index=%d, len=%d ,str=%s\n",Qpressure.Index,strlen(Qpressure.List[Qpressure.Index]) ,Qpressure.List[Qpressure.Index]);             
-    CAN_Pub(NodeSub_SensorCard1_Data,moldPressure.data_hex,HEX_LEN);
-//    CAN_Pub(NodeSub_SensorCard1_Data,Qpressure.List[Qpressure.Index],strlen(Qpressure.List[Qpressure.Index]));  
+    printf("moldPressure(max)=%d\n",moldPressure.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,moldPressure.dataMax_hex,HEX_LEN);
     
-//inject ruler speed    
+ //inject ruler speed    
     pvalidation(inject_rs.str);       
-    printf("inject_rspeed = %d\n",inject_rs.i_minspeed);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_rs.data_hex,HEX_LEN);
+    printf("inject_rspeed(-max)=%d\n",inject_rs.i_minspeed);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rs.dataSpeedMin_hex,HEX_LEN);
     
-//mold ruler speed
+ //mold ruler speed
     pvalidation(QrulerSpeed.List[QrulerSpeed.Index]);     
     pvalidation(mold_rs.str);       
-    printf("mold_rspeed = %d\n",mold_rs.i_minspeed);
-    CAN_Pub(NodeSub_SensorCard1_Data,mold_rs.data_hex,HEX_LEN);
-//    CAN_Pub(NodeSub_SensorCard1_Data,QrulerSpeed.List[QrulerSpeed.Index],strlen(QrulerSpeed.List[QrulerSpeed.Index]));   
+    printf("mold_rspeed(-max)=%d\n",mold_rs.i_minspeed);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rs.dataSpeedMin_hex,HEX_LEN);   
     
  //inject ruler min position   
-    pvalidation(inject_rp.str_posMin);       
-    printf("inject_rpos(min)= %d\n",inject_rp.i_minval);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.data_hex,HEX_LEN);
-    
- //mold ruler min position
-    pvalidation(QrulerMinPos.List[QrulerMinPos.Index]);      
-    pvalidation(mold_rp.str_posMin);       
-    printf("mold_rpos(min)= %d\n",mold_rp.i_minval);
-    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.data_hex,HEX_LEN);
-//    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMinPos.List[QrulerMinPos.Index],strlen(QrulerMinPos.List[QrulerMinPos.Index]));   
+    pvalidation(inject_rp.str_posMin); 
+    printf("inject_rulerPos(min)= %d\n",inject_rp.i_minval);    
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.dataMin_hex,HEX_LEN);
     
  //inject ruler max position     
     pvalidation(inject_rp.str);       
-    printf("inject_rpos(MAX)= %d\n",inject_rp.i_maxval);
-    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.data_hex,HEX_LEN);    
+    printf("inject_rulerPos(MAX)= %d\n",inject_rp.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,inject_rp.dataMax_hex,HEX_LEN);  
     
- //mold ruler max position    
-    pvalidation(QrulerMaxPos.List[QrulerMaxPos.Index]);  
+ //mold ruler min position   
+    pvalidation(mold_rp.str_posMin);       
+    printf("mold_rulerPos(min)= %d\n",mold_rp.i_minval);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.dataMin_hex,HEX_LEN);
+     
+ //mold ruler max position      
     pvalidation(mold_rp.str);       
-    printf("mold_rpos(MAX)= %d\n",mold_rp.i_maxval);
-    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.data_hex,HEX_LEN);  
-//    CAN_Pub(NodeSub_SensorCard1_Data,QrulerMaxPos.List[QrulerMaxPos.Index],strlen(QrulerMaxPos.List[QrulerMaxPos.Index]));    
+    printf("mold_rulerPos(MAX)= %d\n",mold_rp.i_maxval);
+    CAN_Pub(NodeSub_SensorCard1_Data,mold_rp.dataMax_hex,HEX_LEN);  
 
+
+    analog_reset(&inject_rs);   
+    analog_reset(&mold_rs);
+    analog_reset(&inject_rp);   
+    analog_reset(&mold_rp); 
+    analog_reset(&pressure2[mold]);    
+    analog_reset(&pressure1[mold]);
+    analog_reset(&pressure2[inject]);    
+    analog_reset(&pressure1[inject]);   
+    analog_reset(&injectPressure);     
+    analog_reset(&moldPressure);   
 
     Send_permite = false;    
     }     
-//      ADS1115_ReadADC(&inject_r);  
-//    //printf("ADC =%f\n",inject_r.f_value);
-   //HAL_Delay(80);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

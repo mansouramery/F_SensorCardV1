@@ -50,14 +50,14 @@ void adc_init(void){
 for(uint8_t i =0;i<2;i++){  
 pressure1[i].addr = ADS1115_ADD1;
 pressure1[i].dr = ADS1115_DR_860SPS;
-pressure1[i].mux = ADS1115_MUX_AIN0_GND;
+pressure1[i].mux = ADS1115_MUX_AIN0_GND; //ADS1115_MUX_AIN1_GND   //ADS1115_MUX_AIN0_GND
 pressure1[i].pga = ADS1115_PGA_4_096V; 
 pressure1[i].gain =  4.004;   
 pressure1[i].rst_ct = 300;
   
 pressure2[i].addr = ADS1115_ADD1;
 pressure2[i].dr = ADS1115_DR_860SPS;;
-pressure2[i].mux = ADS1115_MUX_AIN2_GND;
+pressure2[i].mux = ADS1115_MUX_AIN2_GND; //ADS1115_MUX_AIN3_GND   //ADS1115_MUX_AIN2_GND
 pressure2[i].pga = ADS1115_PGA_4_096V; 
 pressure2[i].gain =  4.004;
 pressure2[i].rst_ct = 300;
@@ -122,32 +122,37 @@ if((adc->speed < adc->minspeed) && (adc->speed<offset_1_0)){
 
 void analog_record(Analog *adc,char *header,VAL_opt opt){
       //memset(str_Temp,0,strlen(str_Temp));   
-    adc->str[0] = '\0';
-	adc->data_hex[0] = header[0];    
+    adc->str[0] = '\0';   
     if(opt == MAX_VAL){
-        //printf("f_maxval=%f\n",adc->f_maxval);
+	adc->dataMax_hex[0] = header[0];
     adc->i_maxval = round(adc->f_maxval*1000); //mv
     snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_maxval);  
-        printf("AnalogMAX_str-> %s\n",adc->str);  
-	adc->data_hex[1] = (adc->i_maxval >>8)&0xFF; //high
-	adc->data_hex[2] =  adc->i_maxval&0xFF; //low        
+//        printf("AnalogMAX_str-> %s\n",adc->str);  
+	adc->dataMax_hex[1] = (adc->i_maxval >>8)&0xFF; //high
+	adc->dataMax_hex[2] =  adc->i_maxval&0xFF; //low        
     }else if(opt == VALUE){
+	   adc->dataLast_hex[0] = header[0];       
        adc->i_value = round(adc->f_value*1000); //mv 
        snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_value);  
-	adc->data_hex[1] = (adc->i_value >>8)&0xFF; //high
-	adc->data_hex[2] =  adc->i_value&0xFF; //low         
-    }else if(opt == min_SPEED){  
+	adc->dataLast_hex[1] = (adc->i_value >>8)&0xFF; //high
+	adc->dataLast_hex[2] =  adc->i_value&0xFF; //low         
+    }else if(opt == min_SPEED){
+	  adc->dataSpeedMin_hex[0] = header[0];        
       adc->i_minspeed = round(adc->minspeed)+0;
       snprintf(adc->str, sizeof(adc->str), "%s%d",header,adc->i_minspeed);
-      printf("AnalogMAX_SPEED_str-> %s\n\n",adc->str); 
- 	adc->data_hex[1] = (adc->i_minspeed >>8)&0xFF; //high
-	adc->data_hex[2] =  adc->i_minspeed&0xFF; //low         
+//      printf("AnalogMAX_SPEED_str-> %s\n\n",adc->str); 
+        if(adc->i_minspeed<0){
+            adc->i_minspeed = (-1)*(adc->i_minspeed);
+        }
+ 	adc->dataSpeedMin_hex[1] = (adc->i_minspeed >>8)&0xFF; //high
+	adc->dataSpeedMin_hex[2] =  adc->i_minspeed&0xFF; //low         
     }else if(opt == min_val){
+	 adc->dataMin_hex[0] = header[0];        
      adc->i_minval = round(adc->f_minval*1000); //mv
      snprintf(adc->str_posMin, sizeof(adc->str_posMin), "%s%d",header,adc->i_minval);  
-     printf("AnalogMin_str-> %s\n",adc->str_posMin); 
- 	adc->data_hex[1] = (adc->i_minval >>8)&0xFF; //high
-	adc->data_hex[2] =  adc->i_minval&0xFF; //low          
+//     printf("AnalogMin_str-> %s\n",adc->str_posMin); 
+ 	adc->dataMin_hex[1] = (adc->i_minval >>8)&0xFF; //high
+	adc->dataMin_hex[2] =  adc->i_minval&0xFF; //low          
 
     }        
     
@@ -187,9 +192,25 @@ void analog_reset(Analog *adc){
   adc->prespeed = 0.0;
   adc->maxspeed = 0.0;    
   adc->f_minval = 200; // over 
-  adc->data_hex[0] = 0;
-  adc->data_hex[1] = 0;
-  adc->data_hex[2] = 0;
+  adc->dataMin_hex[0] = 0;
+  adc->dataMin_hex[1] = 0;
+  adc->dataMin_hex[2] = 0;
+    
+  adc->dataLast_hex[0] = 0;
+  adc->dataLast_hex[1] = 0;
+  adc->dataLast_hex[2] = 0;
+    
+  adc->dataMax_hex[0] = 0;
+  adc->dataMax_hex[1] = 0;
+  adc->dataMax_hex[2] = 0;
+  
+  adc->dataSpeedMin_hex[0] = 0;
+  adc->dataSpeedMin_hex[1] = 0;
+  adc->dataSpeedMin_hex[2] = 0; 
+
+  adc->dataSpeedMax_hex[0] = 0;
+  adc->dataSpeedMax_hex[1] = 0;
+  adc->dataSpeedMax_hex[2] = 0; 
     
 }
 void analog_queue(Queue *Q,char* str){

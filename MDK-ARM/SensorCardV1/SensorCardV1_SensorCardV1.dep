@@ -1,7 +1,7 @@
 Dependencies for Project 'SensorCardV1', Target 'SensorCardV1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
 F (startup_stm32f103xb.s)(0x687B4AED)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 531" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xb.lst --xref -o sensorcardv1\startup_stm32f103xb.o --depend sensorcardv1\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x695A002A)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ../../../../01_OPCUA_WIFI/SOFTWARE_DESIGN/Control_logic/ControlLogic_02_RFID_CAN485/CAN_Uniform_V02/My_Libs/CAN_Confige -I ../Libs/canFunc -I ../Libs/thermocouple -I ../Libs/inc-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\main.o --omf_browse sensorcardv1\main.crf --depend sensorcardv1\main.d)
+F (../Core/Src/main.c)(0x6995B1B6)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ../../../../01_OPCUA_WIFI/SOFTWARE_DESIGN/Control_logic/ControlLogic_02_RFID_CAN485/CAN_Uniform_V02/My_Libs/CAN_Confige -I ../Libs/canFunc -I ../Libs/thermocouple -I ../Libs/inc-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\main.o --omf_browse sensorcardv1\main.crf --depend sensorcardv1\main.d)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -37,8 +37,8 @@ I (../Core/Inc/can.h)(0x68246014)
 I (../Core/Inc/i2c.h)(0x68246015)
 I (../Core/Inc/spi.h)(0x68246015)
 I (../Core/Inc/tim.h)(0x68A9A74A)
-I (../Libs/inc/calculate_fun.h)(0x6947DA30)
-I (../Libs/ADS1115/ads1115.h)(0x6947E0FD)
+I (../Libs/inc/calculate_fun.h)(0x6995959E)
+I (../Libs/ADS1115/ads1115.h)(0x69958E5A)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
 I (../Libs/canFunc/canfunc.h)(0x68B2948C)
@@ -215,8 +215,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-I (../Libs/inc/calculate_fun.h)(0x6947DA30)
-I (../Libs/ADS1115/ads1115.h)(0x6947E0FD)
+I (../Libs/inc/calculate_fun.h)(0x6995959E)
+I (../Libs/ADS1115/ads1115.h)(0x69958E5A)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
 I (../Libs/canFunc/canfunc.h)(0x68B2948C)
@@ -882,7 +882,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
 F (..\Libs\ADS1115\ads1115.c)(0x6947DA30)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ../../../../01_OPCUA_WIFI/SOFTWARE_DESIGN/Control_logic/ControlLogic_02_RFID_CAN485/CAN_Uniform_V02/My_Libs/CAN_Confige -I ../Libs/canFunc -I ../Libs/thermocouple -I ../Libs/inc-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\ads1115.o --omf_browse sensorcardv1\ads1115.crf --depend sensorcardv1\ads1115.d)
-I (..\Libs\ADS1115\ads1115.h)(0x6947E0FD)
+I (..\Libs\ADS1115\ads1115.h)(0x69958E5A)
 I (../Core/Inc/main.h)(0x68246018)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
@@ -914,7 +914,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-I (../Libs/inc/calculate_fun.h)(0x6947DA30)
+I (../Libs/inc/calculate_fun.h)(0x6995959E)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
 I (../Libs/canFunc/canfunc.h)(0x68B2948C)
@@ -1029,8 +1029,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
-F (..\Libs\src\calculate_fun.c)(0x6959F7D5)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ../../../../01_OPCUA_WIFI/SOFTWARE_DESIGN/Control_logic/ControlLogic_02_RFID_CAN485/CAN_Uniform_V02/My_Libs/CAN_Confige -I ../Libs/canFunc -I ../Libs/thermocouple -I ../Libs/inc-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\calculate_fun.o --omf_browse sensorcardv1\calculate_fun.crf --depend sensorcardv1\calculate_fun.d)
-I (../Libs/inc/calculate_fun.h)(0x6947DA30)
+F (..\Libs\src\calculate_fun.c)(0x6996EB56)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Libs/ADS1115 -I ../../MX31856Lib -I ../../../../01_OPCUA_WIFI/SOFTWARE_DESIGN/Control_logic/ControlLogic_02_RFID_CAN485/CAN_Uniform_V02/My_Libs/CAN_Confige -I ../Libs/canFunc -I ../Libs/thermocouple -I ../Libs/inc-I.\RTE\_SensorCardV1-IF:\Keil5_31\Setup\packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IF:\Keil5_31\Setup\packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o sensorcardv1\calculate_fun.o --omf_browse sensorcardv1\calculate_fun.crf --depend sensorcardv1\calculate_fun.d)
+I (../Libs/inc/calculate_fun.h)(0x6995959E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66E821F5)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x68246017)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66E821F5)
@@ -1061,7 +1061,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66E821F5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66E821F5)
-I (../Libs/ADS1115/ads1115.h)(0x6947E0FD)
+I (../Libs/ADS1115/ads1115.h)(0x69958E5A)
 I (../Core/Inc/main.h)(0x68246018)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\math.h)(0x5EC85704)
 I (F:\Keil5_31\Setup\ARM\ARMCC\include\stdio.h)(0x5EC856FC)
