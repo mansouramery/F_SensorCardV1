@@ -64,7 +64,7 @@ void MX_CAN_Init(void)
   
   canfilterconfig.FilterBank = 1;  
   canfilterconfig.FilterIdHigh = Critical_system_Control << 5; // 
-  canfilterconfig.FilterIdLow = NodePub_SensorCard1_ACK << 5; // 
+  canfilterconfig.FilterIdLow = NodePub_Main_ACK << 5; // 
   canfilterconfig.FilterMaskIdHigh = NodePub_KeepAlive << 5; // 
   canfilterconfig.FilterMaskIdLow = NodePub_SensorCard1_MSG << 5;  //
   HAL_CAN_ConfigFilter( & hcan, & canfilterconfig);

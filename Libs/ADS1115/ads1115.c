@@ -97,7 +97,7 @@ HAL_StatusTypeDef ADS1115_ReadADC(Analog *adc_ch){
                 //Get time
                 adc_ch->Tick_pre = adc_ch->Tick; 
                 adc_ch->Tick = time.t;
-                //adc_ch->i_value = round(1000*(adc_ch->gain)*(adc_ch->f_value));
+                adc_ch->i_value = round(1000*(adc_ch->gain)*(adc_ch->f_value));
                 
                 if((adc_ch->f_value) > (adc_ch->f_maxval)){
                     adc_ch->f_maxval = adc_ch->f_value; 

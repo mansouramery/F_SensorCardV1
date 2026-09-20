@@ -87,6 +87,7 @@ Queue Qpressure = {0};
 Queue QrulerSpeed = {0};
 Queue QrulerMinPos = {0};
 Queue QrulerMaxPos = {0};
+uint8_t dataStream[8]={0};
 //Queue Qpressure2 = {0}; //speed -> pressure2
 
 /* USER CODE END 0 */
@@ -149,9 +150,11 @@ int main(void)
 //    strcpy(Qpressure.List[1],"-0");
 //    strcpy(Qpressure.List[0],"-0");
 //    strcpy(Qpressure.List[1],"-0");
+  int streamValue1 = 0,streamValue2 = 0;
   while (1)
-  {       
-
+  { 
+      
+//CAN_Pub(NodePub_SensorCard1_ACK,"CARD1",5); 
 ////..........................................................................
       
 if(cycle_sync == false){
@@ -159,13 +162,28 @@ if(cycle_sync == false){
     if(cal_speed(&inject_rs,BASE_500us) < offset_4_0){        
       ADS1115_ReadADC(&pressure1[inject]); 
       ADS1115_ReadADC(&pressure2[inject]);
-      ADS1115_ReadADC(&inject_rp);        
+      ADS1115_ReadADC(&inject_rp); 
+      streamValue1 = pressure1[inject].i_value + pressure2[inject].i_value;
+      streamValue2 = inject_rp.i_value;
+      dataStream[0] = 'I';
+      dataStream[1] = (streamValue1>>8)&0xFF; 
+      dataStream[2] = streamValue1&0xFF;
+      dataStream[3] = (streamValue2>>8)&0xFF; 
+      dataStream[4] = streamValue2&0xFF;
+      CAN_Pub(NodePub_SensorCard1_ACK,dataStream,5);         
     }    
     if(cal_speed(&mold_rs,BASE_500us) < offset_4_0){        
       ADS1115_ReadADC(&pressure1[mold]); 
       ADS1115_ReadADC(&pressure2[mold]);
-      ADS1115_ReadADC(&mold_rp);        
-        
+      ADS1115_ReadADC(&mold_rp); 
+      streamValue1 = pressure1[mold].i_value + pressure2[mold].i_value;
+      streamValue2 = mold_rp.i_value;
+      dataStream[0] = 'M';
+      dataStream[1] = (streamValue1>>8)&0xFF; 
+      dataStream[2] = streamValue1&0xFF;
+      dataStream[3] = (streamValue2>>8)&0xFF; 
+      dataStream[4] = streamValue2&0xFF;
+      CAN_Pub(NodePub_SensorCard1_ACK,dataStream,5);        
     }       
 }else{
     HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
