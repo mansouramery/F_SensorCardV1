@@ -159,7 +159,7 @@ int main(void)
       
 if(cycle_sync == false){
     //tik = HAL_GetTick();
-    if(cal_speed(&inject_rs,BASE_500us) < offset_4_0){        
+    if(cal_speed(&inject_rs,BASE_500us) < offset_0_1){        
       ADS1115_ReadADC(&pressure1[inject]); 
       ADS1115_ReadADC(&pressure2[inject]);
       ADS1115_ReadADC(&inject_rp); 
@@ -172,7 +172,7 @@ if(cycle_sync == false){
       dataStream[4] = streamValue2&0xFF;
       CAN_Pub(NodePub_SensorCard1_ACK,dataStream,5);         
     }    
-    if(cal_speed(&mold_rs,BASE_500us) < offset_4_0){        
+    if(cal_speed(&mold_rs,BASE_500us) < offset_0_1){        
       ADS1115_ReadADC(&pressure1[mold]); 
       ADS1115_ReadADC(&pressure2[mold]);
       ADS1115_ReadADC(&mold_rp); 

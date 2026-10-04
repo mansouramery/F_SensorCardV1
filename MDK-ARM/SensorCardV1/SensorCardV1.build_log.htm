@@ -27,10 +27,6 @@ Project File Date:  08/23/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'F:\Keil5_31\Setup\ARM\ARMCC\Bin'
 Build target 'SensorCardV1'
-compiling canfunc.c...
-..\Libs\canFunc\canfunc.h(20): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Libs\canFunc\canfunc.c: 1 warning, 0 errors
 compiling main.c...
 ../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -65,10 +61,21 @@ compiling main.c...
 ../Core/Src/main.c(148): warning:  #177-D: variable "opt"  was declared but never referenced
       VAL_opt opt;
 ../Core/Src/main.c: 16 warnings, 0 errors
+compiling canfunc.c...
+..\Libs\canFunc\canfunc.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libs\canFunc\canfunc.c: 1 warning, 0 errors
+compiling can.c...
+compiling ads1115.c...
+../Libs/canFunc/canfunc.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Libs/inc/calculate_fun.h(67): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Libs\ADS1115\ads1115.c: 2 warnings, 0 errors
 linking...
 Program Size: Code=24884 RO-data=356 RW-data=56 ZI-data=3920  
 FromELF: creating hex file...
-"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 17 Warning(s).
+"SensorCardV1\SensorCardV1.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -101,7 +108,7 @@ Package Vendor: Keil
 
    * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:ITM:1.2.0
       Source file:   Source\retarget_io.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:11
 </pre>
 </body>
 </html>
