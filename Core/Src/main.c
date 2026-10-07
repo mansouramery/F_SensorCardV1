@@ -151,15 +151,33 @@ int main(void)
 //    strcpy(Qpressure.List[0],"-0");
 //    strcpy(Qpressure.List[1],"-0");
   int streamValue1 = 0,streamValue2 = 0;
+  uint32_t t1 = 0;
+  uint32_t t2 = 0;
   while (1)
   { 
+      t1 = HAL_GetTick();
+//      CAN_Pub(NodePub_SensorCard1_ACK,"CARD1",5);
+ /*
+      ADS1115_ReadADC(&pressure1[inject]); 
+      ADS1115_ReadADC(&pressure2[inject]);
+      ADS1115_ReadADC(&inject_rp); 
+      streamValue1 = pressure1[inject].i_value + pressure2[inject].i_value;
+      streamValue2 = inject_rp.i_value;
+      dataStream[0] = 'I';
+      dataStream[1] = (streamValue1>>8)&0xFF; 
+      dataStream[2] = streamValue1&0xFF;
+      dataStream[3] = (streamValue2>>8)&0xFF; 
+      dataStream[4] = streamValue2&0xFF;
+      CAN_Pub(NodePub_SensorCard1_ACK,dataStream,5);
+*/
       
-//CAN_Pub(NodePub_SensorCard1_ACK,"CARD1",5); 
 ////..........................................................................
       
+ cycle_sync = false;  
+Send_permite = false;      
 if(cycle_sync == false){
     //tik = HAL_GetTick();
-    if(cal_speed(&inject_rs,BASE_500us) < offset_0_1){        
+    if(cal_speed(&inject_rs,BASE_500us) < 0 ){        
       ADS1115_ReadADC(&pressure1[inject]); 
       ADS1115_ReadADC(&pressure2[inject]);
       ADS1115_ReadADC(&inject_rp); 
@@ -171,8 +189,8 @@ if(cycle_sync == false){
       dataStream[3] = (streamValue2>>8)&0xFF; 
       dataStream[4] = streamValue2&0xFF;
       CAN_Pub(NodePub_SensorCard1_ACK,dataStream,5);         
-    }    
-    if(cal_speed(&mold_rs,BASE_500us) < offset_0_1){        
+    } else{   
+//    if(cal_speed(&mold_rs,BASE_500us) < 1){        
       ADS1115_ReadADC(&pressure1[mold]); 
       ADS1115_ReadADC(&pressure2[mold]);
       ADS1115_ReadADC(&mold_rp); 
@@ -184,7 +202,8 @@ if(cycle_sync == false){
       dataStream[3] = (streamValue2>>8)&0xFF; 
       dataStream[4] = streamValue2&0xFF;
       CAN_Pub(NodePub_SensorCard1_ACK,dataStream,5);        
-    }       
+    }
+    HAL_GPIO_TogglePin(LED4_GPIO_Port,LED4_Pin);    
 }else{
     HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
     
@@ -285,7 +304,6 @@ if(Send_permite == true){
 
     Send_permite = false;    
     }     
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
